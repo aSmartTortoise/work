@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="indicatorColor">#66FFFFFF</color>
-    <color name="indicatorInactiveColor">#1AFFFFFF</color>
-    <color name="temp_high">#F8F38A</color>
-    <color name="temp_low">#57BED4</color>
-    <color name="black_66000000">#66000000</color>
-
-</resources>
