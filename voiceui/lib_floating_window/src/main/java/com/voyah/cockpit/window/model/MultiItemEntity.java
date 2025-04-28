@@ -6,7 +6,7 @@ package com.voyah.cockpit.window.model;
  * description :
  */
 public class MultiItemEntity {
-    private int itemType;
+    protected int itemType;
 
     public int getItemType() {
         return itemType;

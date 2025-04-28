@@ -10,16 +10,19 @@ static def packageTime() {
     return new SimpleDateFormat("yyyyMMddHHmm").format(new Date())
 }
 
+def android_config = rootProject.ext.android
+def depLibs = rootProject.ext.depsLibs
+
 android {
 //    namespace 'com.voyah.cockpit.window'
-    def versionNameStr = "1.1.1"
+    def versionNameStr = "2.0.7"
     def versionInt = Integer.parseInt(versionNameStr.replace('.', ''))
     println("version:$versionInt")
-    compileSdk 33
+    compileSdk android_config.compileSdk
 
     defaultConfig {
-        minSdk 21
-        targetSdk 33
+        minSdk android_config.minSdk
+        targetSdk android_config.targetSdk
         versionCode versionInt
         versionName versionNameStr
 
@@ -38,6 +41,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    buildFeatures {
+        aidl true
+    }
+
     libraryVariants.all { variant ->
         def path = "floatingWindow_${variant.buildType.name}"+
                 "_${versionNameStr}.aar"
@@ -48,11 +55,12 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation depLibs.appcompat
+    implementation depLibs.material
+    testImplementation depLibs.junit
+    androidTestImplementation depLibs.extJunit
+    androidTestImplementation depLibs.espressoCore
 }
 
 

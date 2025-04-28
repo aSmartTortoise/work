@@ -6,11 +6,23 @@ buildscript {
 
         //applifecycle插件仓也是jitpack
         maven { url 'https://jitpack.io' }
+
+//        maven {
+//            // 可见即可说sdk
+//            allowInsecureProtocol true
+//            url = 'http://10.223.105.162:8084/repository/voyah-snapshots/'
+//            credentials {
+//                username "nexus_dn"
+//                password "nexus123"
+//            }
+//        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.3.1'
         //加载插件applifecycle
         classpath 'com.github.hufeiyang.Android-AppLifecycleMgr:applifecycle-plugin:1.0.3'
+        classpath 'io.github.wurensen:gradle-android-plugin-aspectjx:3.3.2'
+
     }
 }
 

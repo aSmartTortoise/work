@@ -5,11 +5,11 @@ ext {
             //使用exoPlayer编译版本需要到33，而33中有bug,xml写代码没有代码提示
             compileSdk       : 33,
             buildToolsVersion: '33.0.3',
-            minSdk           : 21,
+            minSdk           : 28,
             targetSdk        : 33,
 
-            versionCode      : 10001,
-            versionName      : "1.00.01",
+            versionCode      : 14004,
+            versionName      : "1.40.04",
     ]
 
     dependVersion = [
@@ -35,7 +35,10 @@ ext {
             autoSizeVersion       : 'v1.2.1',
             appLifeApiVersion     : '1.0.4',
             appLifeCompilerVersion: '1.0.4',
-            pagVersion            : '4.3.50'
+            pagVersion            : '4.3.50',
+            markwonVersion        : '4.6.2',
+            voiceViewCMDVersion   : '1.0-20240827.012742-20',
+            voiceExportVersion    : '1.0-20240829.062052-7'
     ]
 
     depsLibs = [
@@ -102,6 +105,14 @@ ext {
             autoSize          : "com.github.JessYanCoding:AndroidAutoSize:${dependVersion["autoSizeVersion"]}",
             appLifeApi        : "com.github.hufeiyang.Android-AppLifecycleMgr:applifecycle-api:${dependVersion["appLifeApiVersion"]}",
             appLifeCompiler   : "com.github.hufeiyang.Android-AppLifecycleMgr:applifecycle-compiler:${dependVersion["appLifeCompilerVersion"]}",
-            pag               : "com.tencent.tav:libpag:${dependVersion["pagVersion"]}"
+            pag               : "com.tencent.tav:libpag:${dependVersion["pagVersion"]}",
+            markwonCore       : "io.noties.markwon:core:${dependVersion["markwonVersion"]}",
+            markwonImage      : "io.noties.markwon:image:${dependVersion["markwonVersion"]}",
+            markwonHtml       : "io.noties.markwon:html:${dependVersion["markwonVersion"]}",
+            markwonTable      : "io.noties.markwon:ext-tables:${dependVersion["markwonVersion"]}",
+            markwonStrikeThrough: "io.noties.markwon:ext-strikethrough:${dependVersion["markwonVersion"]}",
+            markwonImageGlide : "io.noties.markwon:image-glide:${dependVersion["markwonVersion"]}",
+            voiceViewCMD      : "com.voyah.ai.voice.sdk:viewcmd-sdk:${dependVersion["voiceViewCMDVersion"]}",
+            voiceExport       : "com.voyah.ai.voice.sdk:voice-export-sdk:${dependVersion["voiceExportVersion"]}"
     ]
 }

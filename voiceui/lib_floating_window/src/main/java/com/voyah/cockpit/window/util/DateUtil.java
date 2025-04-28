@@ -1,9 +1,7 @@
 package com.voyah.cockpit.window.util;
 
 import android.annotation.SuppressLint;
-import android.text.TextUtils;
 
-import java.text.DateFormat;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -60,6 +58,12 @@ public class DateUtil {
     public static String getDate(long millis) {
         calendar.setTimeInMillis(millis);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
+        return sdf.format(calendar.getTime());
+    }
+
+    public static String getDateCustomized(long millis) {
+        calendar.setTimeInMillis(millis);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm", Locale.CHINA);
         return sdf.format(calendar.getTime());
     }
 
@@ -257,7 +261,7 @@ public class DateUtil {
 
     @SuppressLint("SimpleDateFormat")
     public static long getTimeStamp(String dateStr) {
-        if (TextUtils.isEmpty(dateStr)) {
+        if (dateStr == null || dateStr.isEmpty()) {
             return -1;
         }
 
@@ -270,10 +274,14 @@ public class DateUtil {
         return date.getTime();
     }
 
-    public static String getCustomTimeStr(long timeStamp) {
+    public static String getCustomTimeStr(long timeStamp, boolean type24) {
         calendar.setTimeInMillis(timeStamp);
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.CHINA);
+        SimpleDateFormat sdf = new SimpleDateFormat(type24 ? "HH:mm" : "a h:mm", Locale.getDefault());
         return sdf.format(calendar.getTime());
+    }
+
+    public static boolean isToday(String date) {
+        return getMillis(date) == getMillis(getTodayData());
     }
 
 }

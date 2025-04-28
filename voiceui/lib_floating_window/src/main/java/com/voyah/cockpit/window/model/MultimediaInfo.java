@@ -10,24 +10,41 @@ import java.lang.annotation.RetentionPolicy;
  * date : 2024/6/21 10:09
  * description :
  */
-public class MultimediaInfo {
+public class MultimediaInfo extends MultiItemEntity {
     private int position;
 
     private String name;
 
+    /**
+     *  媒体图片
+     */
     private String imgUrl;
 
+    /**
+     *  媒体类型，枚举值 MediaType.TV_DRAMA, MediaType.MOVIE
+     */
     private int type;
 
+
+    /**
+     *  媒体源，枚举值 SourceType.TENCENT, SourceType.IQIYI
+     */
     private int sourceType;
 
+    /**
+     *  标签类型，枚举值 TagType.VIP, TagType.PAYMENT, TagType.SOLE_BROADCAST
+     */
     private int tagType;
 
     /**
-     *  电视剧基数
+     *  电视剧集数
      */
     private int episodes;
 
+    @Override
+    public int getItemType() {
+        return ViewType.MEDIA_TYPE;
+    }
 
     public int getPosition() {
         return position;
@@ -99,10 +116,8 @@ public class MultimediaInfo {
             SourceType.IQIYI})
     @Retention(RetentionPolicy.SOURCE)
     public @interface SourceType {
-
         int TENCENT = 0;
         int IQIYI = 1;
-
     }
 
 
@@ -114,7 +129,6 @@ public class MultimediaInfo {
 
         int VIP = 0;
         int PAYMENT = 1;
-
         int SOLE_BROADCAST = 2;
 
     }

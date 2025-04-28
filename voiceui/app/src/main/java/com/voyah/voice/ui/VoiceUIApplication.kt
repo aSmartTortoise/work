@@ -5,12 +5,15 @@ import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.LogUtils
 import com.hm.lifecycle.api.ApplicationLifecycleManager
+import com.voyah.viewcmd.VoiceViewCmdUtils
+import com.voyah.viewcmd.aspect.VoiceViewCmdInit
 
 /**
  *  author : jie wang
  *  date : 2024/2/26 19:20
  *  description :
  */
+@VoiceViewCmdInit(isCompatibleMode = false)
 class VoiceUIApplication: Application() {
 
     companion object {
@@ -21,10 +24,9 @@ class VoiceUIApplication: Application() {
         super.onCreate()
         Log.d(TAG, "onCreate:")
         LogUtils.getConfig()
-            .setDir(externalCacheDir?.absolutePath + "/logs")
+            .setLogSwitch(true)
             .setBorderSwitch(false)
-            .isLogHeadSwitch = BuildConfig.DEBUG
-        LogUtils.d("onCreate")
+            .isLogHeadSwitch = false
         // 这两行必须写在init之前，否则这些配置在init过程中将无效
         if (BuildConfig.DEBUG) {
             ARouter.openLog()
@@ -33,13 +35,18 @@ class VoiceUIApplication: Application() {
         }
         // 尽可能早，推荐在Application中初始化
         ARouter.init(this)
-
+        VoiceViewCmdUtils.setLogLevel(if (BuildConfig.DEBUG) Log.VERBOSE else Log.DEBUG)
         // 应用生命周期分发到各个module。
         ApplicationLifecycleManager.init()
-        ApplicationLifecycleManager.registerApplicationLifecycleCallbacks("com.voyah.window.VoyahWindowApplication")
+
+        ApplicationLifecycleManager.registerApplicationLifecycleCallbacks(
+            "com.voyah.window.VoyahWindowApplication")
+        ApplicationLifecycleManager.registerApplicationLifecycleCallbacks(
+            "com.voyah.voice.framework.FrameworkApplication")
+        ApplicationLifecycleManager.registerApplicationLifecycleCallbacks(
+            "com.voyah.device.ui.VoyahDeviceApplication")
+
         ApplicationLifecycleManager.onCreate(this)
-
-
     }
 
     override fun onTerminate() {

@@ -20,7 +20,7 @@ import com.voyah.window.R
  */
 class DomainItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
 
-    private val dp24: Lazy<Int> = lazy {
+    private val dp24: Int by lazy(LazyThreadSafetyMode.NONE) {
         context.resources.getDimensionPixelSize(R.dimen.dp_24)
     }
 
@@ -40,6 +40,22 @@ class DomainItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
         context.resources.getDimensionPixelSize(R.dimen.dp_2)
     }
 
+    private val left: Int  by lazy(LazyThreadSafetyMode.NONE) {
+        context.resources.getDimensionPixelSize(R.dimen.dp_48)
+    }
+
+    private val right: Int  by lazy(LazyThreadSafetyMode.NONE) {
+        context.resources.getDimensionPixelSize(R.dimen.dp_30)
+    }
+
+    private val top: Int  by lazy(LazyThreadSafetyMode.NONE) {
+        context.resources.getDimensionPixelSize(R.dimen.dp_32)
+    }
+
+    private val bottom: Int  by lazy(LazyThreadSafetyMode.NONE) {
+        context.resources.getDimensionPixelSize(R.dimen.dp_48)
+    }
+
     private var dotPaint: Paint? = null
     private var linePaint: Paint? = null
 
@@ -56,57 +72,50 @@ class DomainItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
         val viewType = parent.adapter!!.getItemViewType(adapterPosition)
         val count = parent.adapter!!.itemCount
 
-        LogUtils.d("getItemOffsets: adapterPosition:$adapterPosition, viewType:$viewType")
+//        LogUtils.d("getItemOffsets: adapterPosition:$adapterPosition, viewType:$viewType")
         outRect.let {
 
             when (viewType) {
                 ViewType.WEATHER_TYPE_1 -> {
-                    it.left = dp24.value
-                    it.right = dp24.value
-                    when (adapterPosition) {
-                        0 -> {
-                            it.top = dp24.value
-                            it.bottom = dp24.value
-                        }
-                        count - 1 -> {
-                            it.top = dp24.value / 4
-                            it.bottom = dp24.value
-                        }
-                        else -> {
-                            it.top = dp24.value / 4
-                            it.bottom = dp24.value / 4
-                        }
-                    }
+                    it.left = left
+                    it.right = right
+                    it.top = dp24
+                    it.bottom = bottom
                 }
-                ViewType.WEATHER_TYPE_2,
+
+                ViewType.WEATHER_TYPE_2 -> {
+                    it.left = left
+                    it.right = right
+                    it.top = top
+                    it.bottom = top
+                }
+
                 ViewType.WEATHER_TYPE_3 -> {
-                    it.left = dp24.value
-                    it.right = dp24.value
+                    it.left = left
+                    it.right = right
                     when (adapterPosition) {
-                        0 -> {
-                            it.top = 0
-                            it.bottom = 0
-                        }
                         1 -> {
-                            it.top = dp24.value
-                            it.bottom = dp24.value / 4
+                            it.top = 0
+                            it.bottom = dp24 / 2
                         }
+
                         count - 1 -> {
-                            it.top = dp24.value / 4
-                            it.bottom = dp24.value
+                            it.top = dp24 / 2
+                            it.bottom = bottom
                         }
+
                         else -> {
-                            it.top = dp24.value / 4
-                            it.bottom = dp24.value / 4
+                            it.top = dp24 / 2
+                            it.bottom = dp24 / 2
                         }
                     }
                 }
 
                 ViewType.SCHEDULE_TYPE_1 -> {
-                    it.left = dp24.value
-                    it.right = dp24.value
-                    it.top = dp24.value
-                    it.bottom = dp24.value
+                    it.left = left
+                    it.right = right
+                    it.top = top
+                    it.bottom = bottom
                 }
 
                 ViewType.SCHEDULE_TYPE_2,
@@ -116,16 +125,16 @@ class DomainItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
 
                     when (adapterPosition) {
                         0 -> {
-                            it.top = dp24.value + dp40.value
-                            it.bottom = dp24.value
+                            it.top = dp24 + dp40.value
+                            it.bottom = dp24
                         }
                         count - 1 -> {
-                            it.top = dp24.value
-                            it.bottom = dp24.value + dp40.value
+                            it.top = dp24
+                            it.bottom = dp24 + dp40.value
                         }
                         else -> {
-                            it.top = dp24.value
-                            it.bottom = dp24.value
+                            it.top = dp24
+                            it.bottom = dp24
                         }
                     }
                 }
@@ -133,8 +142,35 @@ class DomainItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
                 ViewType.SCHEDULE_TYPE_MORE -> {
                     it.left = dp40.value
                     it.right = dp40.value
-                    it.top = dp24.value
+                    it.top = dp24
                     it.bottom = dp40.value
+                }
+
+                ViewType.STOCK_TYPE -> {
+                    it.left = left
+                    it.right = right
+                    it.top = top
+                    it.bottom = bottom
+                }
+
+                ViewType.BT_PHONE_TYPE -> {
+                    it.left = left
+                    it.right = right
+
+                    when (adapterPosition) {
+                        0 -> {
+                            it.top = top
+                            it.bottom = 0
+                        }
+                        count - 1 -> {
+                            it.top = 0
+                            it.bottom = bottom
+                        }
+                        else -> {
+                            it.top = 0
+                            it.bottom = 0
+                        }
+                    }
                 }
             }
 
@@ -192,7 +228,7 @@ class DomainItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
                      * 绘制上半轴线
                      */
                     val upLineStartX = centerX
-                    val upLineStartY = child.getTop() - dp24.value
+                    val upLineStartY = child.getTop() - dp24
                     val upLineStopX = centerX
                     val upLineStopY: Int = centerY - radius.value
 
@@ -212,7 +248,7 @@ class DomainItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
                     val bottomLineStartX = centerX
                     val bottomLineStartY: Int = centerY + radius.value
                     val bottomLineStopX = centerX
-                    val bottomLineStopY = child.getBottom() + dp24.value
+                    val bottomLineStopY = child.getBottom() + dp24
 
                     if (pos < adapter.itemCount - 1) {
                         val nextViewType = adapter.getItemViewType(pos + 1)

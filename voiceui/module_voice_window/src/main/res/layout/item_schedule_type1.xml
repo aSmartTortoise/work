@@ -4,27 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:background="@color/black_ff1E1F22">
+    android:paddingTop="@dimen/dp_20"
+    android:paddingBottom="@dimen/dp_20"
+    tools:background="@color/root_view_bg">
 
-    <TextView
+    <ImageView
         android:id="@+id/tv_date"
+        android:scaleType="centerCrop"
+        android:src="@drawable/icon_schedule_insert_new"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/layer_list_schedule_date"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="@dimen/sp_40"
+        android:layout_marginStart="@dimen/dp_14"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="29" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="@dimen/dp_100" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <include
         layout="@layout/schedule_right_part1"/>

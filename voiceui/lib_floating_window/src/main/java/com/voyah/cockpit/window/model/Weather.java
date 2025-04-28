@@ -14,9 +14,12 @@ public class Weather extends MultiItemEntity {
 
     private String location;
 
-    private int tempHigh;
+    private Integer tempHigh;
 
-    private int tempLow;
+    private Integer tempLow;
+
+    private Integer tempHighDateRange;
+    private Integer tempLowDateRange;
 
     private String weatherDay;
 
@@ -25,6 +28,14 @@ public class Weather extends MultiItemEntity {
     private int weatherDayIcon;
 
     private int weatherNightIcon;
+
+    private String windDirDay;
+
+    private String windDirNight;
+
+    private String windLevelDay;
+
+    private String windLevelNight;
 
 
 
@@ -60,20 +71,36 @@ public class Weather extends MultiItemEntity {
         this.location = location;
     }
 
-    public int getTempHigh() {
+    public Integer getTempHigh() {
         return tempHigh;
     }
 
-    public void setTempHigh(int tempHigh) {
+    public void setTempHigh(Integer tempHigh) {
         this.tempHigh = tempHigh;
     }
 
-    public int getTempLow() {
+    public Integer getTempLow() {
         return tempLow;
     }
 
-    public void setTempLow(int tempLow) {
+    public void setTempLow(Integer tempLow) {
         this.tempLow = tempLow;
+    }
+
+    public Integer getTempHighDateRange() {
+        return tempHighDateRange;
+    }
+
+    public void setTempHighDateRange(Integer tempHighDateRange) {
+        this.tempHighDateRange = tempHighDateRange;
+    }
+
+    public Integer getTempLowDateRange() {
+        return tempLowDateRange;
+    }
+
+    public void setTempLowDateRange(Integer tempLowDateRange) {
+        this.tempLowDateRange = tempLowDateRange;
     }
 
     public String getWeatherDay() {
@@ -106,5 +133,37 @@ public class Weather extends MultiItemEntity {
 
     public void setWeatherNightIcon(int weatherNightIcon) {
         this.weatherNightIcon = weatherNightIcon;
+    }
+
+    public String getWindDirDay() {
+        return windDirDay;
+    }
+
+    public void setWindDirDay(String windDirDay) {
+        this.windDirDay = windDirDay;
+    }
+
+    public String getWindDirNight() {
+        return windDirNight;
+    }
+
+    public void setWindDirNight(String windDirNight) {
+        this.windDirNight = windDirNight;
+    }
+
+    public String getWindLevelDay() {
+        return windLevelDay;
+    }
+
+    public void setWindLevelDay(String windLevelDay) {
+        this.windLevelDay = windLevelDay;
+    }
+
+    public String getWindLevelNight() {
+        return windLevelNight;
+    }
+
+    public void setWindLevelNight(String windLevelNight) {
+        this.windLevelNight = windLevelNight;
     }
 }

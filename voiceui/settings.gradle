@@ -13,11 +13,37 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url "https://jitpack.io" }
+        flatDir {
+            dirs './module_voice_window/libs'
+        }
+        maven {
+            // 可见即可说sdk
+            allowInsecureProtocol true
+            url = 'http://10.223.105.162:8084/repository/voyah-snapshots/'
+            credentials {
+                username "nexus_dn"
+                password "nexus123"
+            }
+        }
 
     }
 }
-rootProject.name = "VoiceUI"
+rootProject.name = "voiceui"
 include ':app', 'module_voice_window'
-include ':easyfloat'
-include ':lib_framework'
+include ':lib_common_voyah'
+include ':device:lib_base_device'
 include ':lib_floating_window'
+include ':lib_card'
+include ':easyfloat'
+include ':lib_glide'
+include ':lib_markdown_parser'
+include ':lib_common'
+include ':lib_framework'
+
+if (deviceType == 'H56C' || deviceType == 'H56D') {
+    include ':device:lib_h56c'
+} else if (deviceType == "H37A" || deviceType == 'H37B') {
+    include ':device:lib_h37a'
+} else {
+    include ':device:lib_h56c'
+}

@@ -2,6 +2,7 @@ package com.lzf.easyfloat.widget
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.Configuration
 import android.util.AttributeSet
 import android.util.Log
 import android.view.KeyEvent
@@ -83,5 +84,9 @@ internal class ParentFrameLayout(
         super.onDetachedFromWindow()
         config.callbacks?.dismiss()
         config.floatCallbacks?.builder?.dismiss?.invoke()
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration?) {
+        super.onConfigurationChanged(newConfig)
     }
 }

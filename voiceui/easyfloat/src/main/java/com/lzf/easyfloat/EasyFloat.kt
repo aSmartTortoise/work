@@ -80,6 +80,16 @@ class EasyFloat {
         @JvmOverloads
         fun isShow(tag: String? = null) = getConfig(tag)?.isShow ?: false
 
+
+        /**
+         * 获取当前浮窗是否正在显示，通过浮窗的config，获取显示状态
+         * @param tag   浮窗标签
+         * @return  当前浮窗是否正在显示
+         */
+        @JvmStatic
+        @JvmOverloads
+        fun isShowing(tag: String? = null) = getConfig(tag)?.isShowing ?: false
+
         /**
          * 获取当前浮窗中，我们传入的View
          * @param tag   浮窗标签
@@ -168,6 +178,22 @@ class EasyFloat {
          * @param tag   浮窗标签
          */
         private fun getFilterSet(tag: String?) = getConfig(tag)?.filterSet
+
+        fun setWatchOutside(tag: String, watchOutside: Boolean = false) {
+            FloatingWindowManager.getHelper(tag)?.setWatchOutSide(watchOutside)
+        }
+
+        @JvmStatic
+        fun isExitAnimRunning(tag: String?) = FloatingWindowManager.getHelper(tag)?.isExitAnimRunning()
+
+        @JvmStatic
+        fun cancelExitAnimRunning(tag: String?) = FloatingWindowManager.getHelper(tag)?.cancelExitAnim()
+
+        @JvmStatic
+        fun isEnterAnimRunning(tag: String?) = FloatingWindowManager.getHelper(tag)?.isEnterAnimRunning()
+
+        @JvmStatic
+        fun cancelEnterAnimRunning(tag: String?) = FloatingWindowManager.getHelper(tag)?.cancelEnterAnim()
     }
 
 
@@ -240,7 +266,11 @@ class EasyFloat {
          * @param x     起始水平坐标
          * @param y     起始竖直坐标
          */
-        fun setLocation(x: Int, y: Int) = apply { config.locationPair = Pair(x, y) }
+        fun setLocation(x: Int, y: Int) = apply {
+            config.locationPair = Pair(x, y)
+            config.currentLocationX = x
+            config.currentLocationY = y
+        }
 
         /**
          * 设置浮窗的拖拽边距值
@@ -359,6 +389,10 @@ class EasyFloat {
          */
         fun setWindowParamsType(type: Int) = apply {
             config.windowParamsType = type
+        }
+
+        fun setDisplayId(displayId: Int) = apply {
+            config.displayId = displayId
         }
 
         /**

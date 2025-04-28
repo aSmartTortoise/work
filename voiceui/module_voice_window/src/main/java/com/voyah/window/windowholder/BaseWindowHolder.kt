@@ -1,10 +1,16 @@
 package com.voyah.window.windowholder
 
 import android.content.Context
-import com.lzf.easyfloat.utils.DisplayUtils
+import android.graphics.Point
+import android.hardware.display.DisplayManager
+import android.view.WindowManager
+import com.blankj.utilcode.util.LogUtils
+import com.blankj.utilcode.util.ScreenUtils
+import com.voyah.cockpit.window.model.LanguageType
 import com.voyah.cockpit.window.model.VoiceLocation
 import com.voyah.cockpit.window.model.VoiceMode
 import com.voyah.window.R
+import com.voyah.window.view.vpa.VpaState
 
 /**
  *  author : jie wang
@@ -14,10 +20,10 @@ import com.voyah.window.R
 abstract class BaseWindowHolder(val context: Context) {
 
     val screenWidth: Int by lazy(LazyThreadSafetyMode.NONE) {
-        DisplayUtils.getScreenWidth(context)
+        ScreenUtils.getScreenWidth()
     }
     val screenHeight: Int by lazy(LazyThreadSafetyMode.NONE) {
-        DisplayUtils.getScreenHeight(context)
+        ScreenUtils.getScreenHeight()
     }
 
     val statusBarHeight: Int by lazy(LazyThreadSafetyMode.NONE) {
@@ -32,11 +38,20 @@ abstract class BaseWindowHolder(val context: Context) {
     }
 
     var voiceMode: Int = VoiceMode.VOICE_MODE_ONLINE
+    var languageType: Int = LanguageType.MANDARIN
     var wakeVoiceLocation: Int = VoiceLocation.FRONT_RIGHT
+    var currentNightModeFlag: Boolean = false
 
-    abstract fun isWindowShow(): Boolean
+    var screenStateProvider: IScreenStateProvider? = null
 
-    abstract fun onVoiceAwake(voiceServiceMode: Int, voiceLocation: Int)
+    init {
+        val screenWidth = getScreenWidthAsDisplayId(getDisplayId())
+        LogUtils.i("init screenWidth:$screenWidth")
+    }
+
+    open fun isWindowShow(): Boolean = false
+
+    abstract fun getDisplayId(): Int
 
     abstract fun onVoiceListening()
 
@@ -50,4 +65,42 @@ abstract class BaseWindowHolder(val context: Context) {
 
     open fun dismissWindow() {
     }
+
+    abstract fun setVoiceServiceMode(voiceMode: Int)
+
+    abstract fun setVoiceLanguageType(languageType: Int)
+
+    abstract fun onUIModeChange(nightModeFlag: Boolean)
+
+    abstract fun setVoiceFocusLocation()
+
+    fun getScreenWidthAsDisplayId(displayId: Int): Int {
+        LogUtils.d("getScreenWidthAsDisplayId displayId:$displayId")
+        val point = Point()
+        val displayManager = context.getSystemService(DisplayManager::class.java) as DisplayManager
+        val display = displayManager.getDisplay(displayId)
+        if (display != null) {
+            LogUtils.d("getScreenWidth display not null.")
+            display.getRealSize(point)
+        } else {
+            val wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+            wm.defaultDisplay.getRealSize(point)
+        }
+        val width = point.x
+        LogUtils.d("screenWidth:$width")
+        return width
+    }
+
+    fun getLocationParsed(locationType: Int): String {
+        return when(locationType) {
+            VoiceLocation.FRONT_LEFT -> "主驾"
+            VoiceLocation.FRONT_RIGHT -> "副驾"
+            VoiceLocation.REAR_LEFT -> "二排左"
+            VoiceLocation.REAR_RIGHT -> "二排右"
+            VoiceLocation.THIRD_ROW_LEFT -> "三排排左"
+            VoiceLocation.THIRD_ROW_RIGHT -> "三排排右"
+            else -> "未知位置"
+        }
+    }
+
 }

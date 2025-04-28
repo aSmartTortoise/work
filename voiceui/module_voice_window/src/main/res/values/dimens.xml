@@ -1001,15 +1001,34 @@
     <dimen name="dp_498.5">498.5dp</dimen>
     <dimen name="dp_499">499dp</dimen>
     <dimen name="dp_499.5">499.5dp</dimen>
+    <dimen name="dp_601">601dp</dimen>
 
 
+    <dimen name="dp_548">548dp</dimen>
+    <dimen name="dp_560">560dp</dimen>
+    <dimen name="dp_568">568dp</dimen>
     <dimen name="dp_570">570dp</dimen>
     <dimen name="dp_600">600dp</dimen>
+    <dimen name="dp_698">698dp</dimen>
     <dimen name="dp_720">720dp</dimen>
+    <dimen name="dp_740">740dp</dimen>
     <dimen name="dp_744">744dp</dimen>
+    <dimen name="dp_748">748dp</dimen>
+    <dimen name="dp_762">762dp</dimen>
+    <dimen name="dp_840">840dp</dimen>
+    <dimen name="dp_859">859dp</dimen>
+    <dimen name="dp_899">899dp</dimen>
     <dimen name="dp_900">900dp</dimen>
+    <dimen name="dp_905">905dp</dimen>
+    <dimen name="dp_912">912dp</dimen>
+    <dimen name="dp_934">934dp</dimen>
+    <dimen name="dp_1040">1040dp</dimen>
+    <dimen name="dp_1045">1045dp</dimen>
     <dimen name="dp_1067">1067dp</dimen>
+    <dimen name="dp_1069">1069dp</dimen>
     <dimen name="dp_1200">1200dp</dimen>
+    <dimen name="dp_1234">1234dp</dimen>
+    <dimen name="dp_1390">1390dp</dimen>
 
     <!--字体暂时使用dp-->
     <dimen name="text_size_0">0dp</dimen>

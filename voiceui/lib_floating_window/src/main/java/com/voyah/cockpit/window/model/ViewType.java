@@ -18,7 +18,10 @@ import java.lang.annotation.RetentionPolicy;
         ViewType.SCHEDULE_TYPE_2,
         ViewType.SCHEDULE_TYPE_3,
         ViewType.SCHEDULE_TYPE_MORE,
-        ViewType.MEDIA_TYPE})
+        ViewType.MEDIA_TYPE,
+        ViewType.STOCK_TYPE,
+        ViewType.CHAT_TYPE_MAIN,
+        ViewType.CHAT_TYPE_RECOMMEND})
 @Retention(RetentionPolicy.SOURCE)
 public @interface ViewType {
 
@@ -44,5 +47,13 @@ public @interface ViewType {
     int SCHEDULE_TYPE_MORE = 8;
 
     int MEDIA_TYPE = 9;
+
+    int STOCK_TYPE = 10;
+
+    int CHAT_TYPE_MAIN = 11;
+
+    int CHAT_TYPE_RECOMMEND = 12;
+
+    int MUSIC_TYPE = 13;
 
 }

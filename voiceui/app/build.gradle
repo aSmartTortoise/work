@@ -4,14 +4,11 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.hm.plugin.lifecycle'
+    id 'io.github.wurensen.android-aspectjx'
 }
 
 def android_config = rootProject.ext.android
 def depLibs = rootProject.ext.depsLibs
-
-static def packageTime() {
-    return new SimpleDateFormat("yyyyMMddHHmm").format(new Date())
-}
 
 android {
     namespace 'com.voyah.voice.ui'
@@ -24,7 +21,7 @@ android {
         targetSdk android_config.targetSdk
         versionCode android_config.versionCode
         versionName android_config.versionName
-
+        versionNameSuffix "_${getCommitHash()}_${packageTime()}"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -64,8 +61,8 @@ android {
     }
 
     applicationVariants.all { variant ->
-        def path = "${rootProject.name}_${variant.flavorName}_${variant.buildType.name}"+
-                "_${variant.versionName}_${packageTime()}.apk"
+        def path = "N_${project.deviceType}_${rootProject.name}_${variant.buildType.name}"+
+                "_${variant.versionName}.apk"
         variant.outputs.all { output ->
 //            output.outputFileName = path
             assembleRelease.doLast{
@@ -81,7 +78,35 @@ android {
 
     }
 }
-println("build.gradle depLibs:${depLibs.coreKtx}")
+
+def getCommitHash() {
+    try {
+        return 'git rev-parse --short HEAD'.execute(
+                [], project.rootDir
+        ).text.trim()
+    } catch (e) {
+        return 'unknown'
+    }
+}
+
+def packageTime() {
+    return new SimpleDateFormat("yyMMdd").format(new Date())
+}
+
+aspectjx {
+    // 是否debug，开启后会输出织入信息等相关日志（3.3.0版本新增）
+    debug = false
+    // 是否启动
+    enabled = true
+    // 移除kotlin相关，编译错误和提升速度
+    // exclude 'kotlin.jvm', 'kotlin.internal'
+    // exclude 'kotlinx.coroutines.internal', 'kotlinx.coroutines.android'
+    // 包含指定的package路径名称做织入，使编译提速
+    include 'android.app', 'androidx', 'android.view.View'
+    // 应用根据需要填自己需要的package路径，工程的包名路径需要添加上
+    include 'com.voyah'
+}
+
 dependencies {
 
     implementation depLibs.coreKtx
@@ -94,4 +119,10 @@ dependencies {
 
     implementation project(path: ':module_voice_window')
     implementation project(path: ':lib_framework')
+
+    if (project.deviceType == 'H56C' || (project.deviceType == 'H56D')) {
+        implementation project(path: ':device:lib_h56c')
+    } else if (project.deviceType == 'H37A' || (project.deviceType == 'H37B')) {
+        implementation project(path: ':device:lib_h37a')
+    }
 }

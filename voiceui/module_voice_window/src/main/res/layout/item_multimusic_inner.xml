@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/dp_601"
+        android:layout_height="@dimen/dp_170">
+
+        <ImageView
+            android:id="@+id/iv_music"
+            android:layout_width="@dimen/dp_170"
+            android:layout_height="@dimen/dp_170"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="@dimen/dp_0"/>
+
+        <TextView
+            android:id="@+id/tv_index"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:layout_marginStart="@dimen/dp_4"
+            android:layout_marginTop="@dimen/dp_4"
+            android:background="@drawable/shape_rectangle_index_bg"
+            android:gravity="center"
+            android:textColor="@color/white_ccFFFFFF"
+            android:textSize="@dimen/sp_28"
+            app:layout_constraintStart_toStartOf="@id/iv_music"
+            app:layout_constraintTop_toTopOf="@id/iv_music"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/tv_music"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_24"
+            android:gravity="center"
+            android:textColor="@color/media_name"
+            android:textSize="@dimen/sp_28"
+            app:layout_constraintStart_toEndOf="@id/iv_music"
+            app:layout_constraintTop_toTopOf="@id/iv_music"
+            tools:text="歌曲名称"
+            list="@{@string/attr_list_value_music}"/>
+
+        <ImageView
+            android:id="@+id/iv_vip"
+            android:layout_width="@dimen/dp_38"
+            android:layout_height="@dimen/dp_24"
+            android:src="@drawable/icon_multimusic_tag_vip"
+            app:layout_constraintStart_toStartOf="@id/tv_music"
+            app:layout_constraintTop_toBottomOf="@id/tv_music"
+            android:layout_marginTop="@dimen/dp_12"/>
+
+        <TextView
+            android:id="@+id/tv_artist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="@id/tv_music"
+            app:layout_constraintTop_toBottomOf="@id/tv_music"
+            android:layout_marginTop="@dimen/dp_72"
+            android:textSize="@dimen/sp_24"
+            android:textColor="@color/media_artist_name"
+            android:text="周杰伦/杨瑞代·跨时代"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
+

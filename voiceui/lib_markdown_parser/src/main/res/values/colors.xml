@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="markdown_table_border">#ff81858D</color>
+    <color name="markdown_cell_header">#1a000000</color>
+    <color name="markdown_root_view_bg">#ffEEF2FF</color>
+    <color name="markdown_heading_level">#e615181D</color>
+
+
+
+</resources>

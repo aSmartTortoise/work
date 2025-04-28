@@ -38,374 +38,299 @@ object WeatherConfigUtil {
     }
 
     fun setWeatherIcon(weather: Weather, largeFlag: Boolean = true) {
-
-        when (weather.weatherDay) {
+        val weatherDayIcon = when (weather.weatherDay) {
             "晴", "大部晴朗" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_sunny_day_l
-                else R.drawable.icon_weather_sunny_day_s
+                R.drawable.icon_weather_sunny_day
             }
 
             "多云" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_cloudy_day_l
-                else R.drawable.icon_weather_cloudy_day_s
+                R.drawable.icon_weather_cloudy_day
             }
 
             "少云" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_partly_cloudy_day_l
-                else R.drawable.icon_weather_partly_cloudy_day_s
+                R.drawable.icon_weather_partly_cloudy_day
             }
 
             "阴" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_overcast_l
-                else R.drawable.icon_weather_overcast_s
+                R.drawable.icon_weather_overcast
             }
 
             "阵雨", "局部阵雨" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_rain_showers_day_l
-                else R.drawable.icon_weather_rain_showers_day_s
+                R.drawable.icon_weather_rain_showers_day
             }
 
             "小阵雨" -> {
-                weather.weatherDayIcon =
-                    if (largeFlag) R.drawable.icon_weather_light_rain_showers_day_l
-                    else R.drawable.icon_weather_light_rain_showers_day_s
+                R.drawable.icon_weather_light_rain_showers_day
             }
 
             "强阵雨" -> {
-                weather.weatherDayIcon =
-                    if (largeFlag) R.drawable.icon_weather_heavy_rain_showers_day_l
-                    else R.drawable.icon_weather_heavy_rain_showers_day_s
+                R.drawable.icon_weather_heavy_rain_showers_day
             }
 
             "阵雪" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_snow_showers_day_l
-                else R.drawable.icon_weather_snow_showers_day_s
+                R.drawable.icon_weather_snow_showers_day
             }
 
             "小阵雪" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_light_snow_showers_day_l
-                else R.drawable.icon_weather_light_snow_showers_day_s
+                R.drawable.icon_weather_light_snow_showers_day
             }
 
             "雾" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_fog_l
-                else R.drawable.icon_weather_fog_s
+                R.drawable.icon_weather_fog
             }
 
             "冻雾" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_frost_fog_l
-                else R.drawable.icon_weather_frost_fog_s
+                R.drawable.icon_weather_frost_fog
             }
 
             "沙尘暴" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_sandstorm_l
-                else R.drawable.icon_weather_sandstorm_s
+                R.drawable.icon_weather_sandstorm
             }
 
             "浮尘" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_floating_dust_l
-                else R.drawable.icon_weather_floating_dust_s
+                R.drawable.icon_weather_floating_dust
             }
 
             "尘卷风" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_dust_whirl_l
-                else R.drawable.icon_weather_dust_whirl_s
+                R.drawable.icon_weather_dust_whirl
             }
 
             "扬沙" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_blowing_sand_l
-                else R.drawable.icon_weather_blowing_sand_s
+                R.drawable.icon_weather_blowing_sand
             }
 
             "强沙尘暴" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_heavy_sandstorm_l
-                else R.drawable.icon_weather_heavy_sandstorm_s
+                R.drawable.icon_weather_heavy_sandstorm
             }
 
             "霾" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_haze_l
-                else R.drawable.icon_weather_haze_s
+                R.drawable.icon_weather_haze
             }
 
             "雷阵雨" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_thoundershower_l
-                else R.drawable.icon_weather_thoundershower_s
+                R.drawable.icon_weather_thoundershower
             }
 
             "雷电" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_thounder_light_l
-                else R.drawable.icon_weather_thounder_light_s
+                R.drawable.icon_weather_thounder_light
             }
 
             "雷暴" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_thounderstorm_l
-                else R.drawable.icon_weather_thounderstorm_s
+                R.drawable.icon_weather_thounderstorm
             }
 
             "雷阵雨伴有冰雹" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_thoundershower_ice_storm_l
-                else R.drawable.icon_weather_thoundershower_ice_storm_s
+                R.drawable.icon_weather_thoundershower_ice_storm
             }
 
             "冰雹" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_ice_storm_l
-                else R.drawable.icon_weather_ice_storm_s
+                R.drawable.icon_weather_ice_storm
             }
 
             "冰针", "冰粒" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_ice_needle_l
-                else R.drawable.icon_weather_ice_needle_s
+                R.drawable.icon_weather_ice_needle
             }
 
             "雨夹雪" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_rain_snow_l
-                else R.drawable.icon_weather_rain_snow_s
+                R.drawable.icon_weather_rain_snow
             }
 
             "小雨", "小到中雨" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_light_rain_l
-                else R.drawable.icon_weather_light_rain_s
+                R.drawable.icon_weather_light_rain
             }
 
             "中雨", "雨", "中到大雨" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_rain_l
-                else R.drawable.icon_weather_rain_s
+                R.drawable.icon_weather_rain
             }
 
             "大雨", "大到暴雨" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_heavy_rain_l
-                else R.drawable.icon_weather_heavy_rain_s
+                R.drawable.icon_weather_heavy_rain
             }
 
             "暴雨" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_rainstorm_l
-                else R.drawable.icon_weather_rainstorm_s
+                R.drawable.icon_weather_rainstorm
             }
 
             "大暴雨" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_heavy_rainstorm_l
-                else R.drawable.icon_weather_heavy_rainstorm_s
+                R.drawable.icon_weather_heavy_rainstorm
             }
 
             "特大暴雨" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_extremly_heavy_rainstorm_l
-                else R.drawable.icon_weather_extremly_heavy_rainstorm_s
+                R.drawable.icon_weather_extremly_heavy_rainstorm
             }
 
             "小雪", "小到中雪" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_light_snow_l
-                else R.drawable.icon_weather_light_snow_s
+                R.drawable.icon_weather_light_snow
             }
 
             "雪", "中雪" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_snow_l
-                else R.drawable.icon_weather_snow_s
+                R.drawable.icon_weather_snow
             }
 
             "大雪" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_heavy_snow_l
-                else R.drawable.icon_weather_heavy_snow_s
+                R.drawable.icon_weather_heavy_snow
             }
 
             "暴雪" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_snowstorm_l
-                else R.drawable.icon_weather_snowstorm_s
+                R.drawable.icon_weather_snowstorm
             }
 
             "冻雨" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_freezing_rain_l
-                else R.drawable.icon_weather_freezing_rain_s
+                R.drawable.icon_weather_freezing_rain
             }
 
             else -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_default_l
-                else R.drawable.icon_weather_default_s
+                R.drawable.icon_weather_default
             }
         }
 
-        when (weather.weatherNight) {
+        weather.weatherDayIcon = weatherDayIcon
+
+        val weatherNightIcon = when (weather.weatherNight) {
             "晴", "大部晴朗" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_sunny_night_l
-                else R.drawable.icon_weather_sunny_night_s
+                R.drawable.icon_weather_sunny_night
             }
 
             "多云" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_cloudy_night_l
-                else R.drawable.icon_weather_cloudy_night_s
+                R.drawable.icon_weather_cloudy_night
             }
 
             "少云" -> {
-                weather.weatherNightIcon =
-                    if (largeFlag) R.drawable.icon_weather_partly_cloudy_night_l
-                    else R.drawable.icon_weather_partly_cloudy_night_s
+                R.drawable.icon_weather_partly_cloudy_night
             }
 
             "阴" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_overcast_l
-                else R.drawable.icon_weather_overcast_s
+                R.drawable.icon_weather_overcast
             }
 
             "阵雨", "局部阵雨" -> {
-                weather.weatherNightIcon =
-                    if (largeFlag) R.drawable.icon_weather_rain_showers_night_l
-                    else R.drawable.icon_weather_rain_showers_night_s
+                R.drawable.icon_weather_rain_showers_night
             }
 
             "小阵雨" -> {
-                weather.weatherNightIcon =
-                    if (largeFlag) R.drawable.icon_weather_light_rain_showers_night_l
-                    else R.drawable.icon_weather_light_rain_showers_night_s
+                R.drawable.icon_weather_light_rain_showers_night
             }
 
             "强阵雨" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_heavy_rain_showers_night_l
-                else R.drawable.icon_weather_heavy_rain_showers_night_s
+                R.drawable.icon_weather_heavy_rain_showers_night
             }
 
             "阵雪" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_snow_showers_night_l
-                else R.drawable.icon_weather_snow_showers_night_s
+                R.drawable.icon_weather_snow_showers_night
             }
 
             "小阵雪" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_light_snow_showers_night_l
-                else R.drawable.icon_weather_light_snow_showers_night_s
+                R.drawable.icon_weather_light_snow_showers_night
             }
 
             "雾" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_fog_l
-                else R.drawable.icon_weather_fog_s
+                R.drawable.icon_weather_fog
             }
 
             "冻雾" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_frost_fog_l
-                else R.drawable.icon_weather_frost_fog_s
+                R.drawable.icon_weather_frost_fog
             }
 
             "沙尘暴" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_sandstorm_l
-                else R.drawable.icon_weather_sandstorm_s
+                R.drawable.icon_weather_sandstorm
             }
 
             "浮尘" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_floating_dust_l
-                else R.drawable.icon_weather_floating_dust_s
+                R.drawable.icon_weather_floating_dust
             }
 
             "尘卷风" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_dust_whirl_l
-                else R.drawable.icon_weather_dust_whirl_s
+                R.drawable.icon_weather_dust_whirl
             }
 
             "扬沙" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_blowing_sand_l
-                else R.drawable.icon_weather_blowing_sand_s
+                R.drawable.icon_weather_blowing_sand
             }
 
             "强沙尘暴" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_heavy_sandstorm_l
-                else R.drawable.icon_weather_heavy_sandstorm_s
+                R.drawable.icon_weather_heavy_sandstorm
             }
 
             "霾" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_haze_l
-                else R.drawable.icon_weather_haze_s
+                R.drawable.icon_weather_haze
             }
 
             "雷阵雨" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_thoundershower_l
-                else R.drawable.icon_weather_thoundershower_s
+                R.drawable.icon_weather_thoundershower
             }
 
             "雷电" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_thounder_light_l
-                else R.drawable.icon_weather_thounder_light_s
+                R.drawable.icon_weather_thounder_light
             }
 
             "雷暴" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_thounderstorm_l
-                else R.drawable.icon_weather_thounderstorm_s
+                R.drawable.icon_weather_thounderstorm
             }
 
             "雷阵雨伴有冰雹" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_thoundershower_ice_storm_l
-                else R.drawable.icon_weather_thoundershower_ice_storm_s
+                R.drawable.icon_weather_thoundershower_ice_storm
             }
 
             "冰雹" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_ice_storm_l
-                else R.drawable.icon_weather_ice_storm_s
+                R.drawable.icon_weather_ice_storm
             }
 
             "冰针", "冰粒" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_ice_needle_l
-                else R.drawable.icon_weather_ice_needle_s
+                R.drawable.icon_weather_ice_needle
             }
 
             "雨夹雪" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_rain_snow_l
-                else R.drawable.icon_weather_rain_snow_s
+                R.drawable.icon_weather_rain_snow
             }
 
             "小雨", "小到中雨" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_light_rain_l
-                else R.drawable.icon_weather_light_rain_s
+                R.drawable.icon_weather_light_rain
             }
 
             "中雨", "雨", "中到大雨" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_rain_l
-                else R.drawable.icon_weather_rain_s
+                R.drawable.icon_weather_rain
             }
 
             "大雨", "大到暴雨" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_heavy_rain_l
-                else R.drawable.icon_weather_heavy_rain_s
+                R.drawable.icon_weather_heavy_rain
             }
 
             "暴雨" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_rainstorm_l
-                else R.drawable.icon_weather_rainstorm_s
+                R.drawable.icon_weather_rainstorm
             }
 
             "大暴雨" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_heavy_rainstorm_l
-                else R.drawable.icon_weather_heavy_rainstorm_s
+                R.drawable.icon_weather_heavy_rainstorm
             }
 
             "特大暴雨" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_extremly_heavy_rainstorm_l
-                else R.drawable.icon_weather_extremly_heavy_rainstorm_s
+                R.drawable.icon_weather_extremly_heavy_rainstorm
             }
 
             "小雪", "小到中雪" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_light_snow_l
-                else R.drawable.icon_weather_light_snow_s
+                R.drawable.icon_weather_light_snow
             }
 
             "雪", "中雪" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_snow_l
-                else R.drawable.icon_weather_snow_s
+                R.drawable.icon_weather_snow
             }
 
             "大雪" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_heavy_snow_l
-                else R.drawable.icon_weather_heavy_snow_s
+                R.drawable.icon_weather_heavy_snow
             }
 
             "暴雪" -> {
-                weather.weatherNightIcon = if (largeFlag) R.drawable.icon_weather_snowstorm_l
-                else R.drawable.icon_weather_snowstorm_s
+                R.drawable.icon_weather_snowstorm
             }
 
             "冻雨" -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_freezing_rain_l
-                else R.drawable.icon_weather_freezing_rain_s
+                R.drawable.icon_weather_freezing_rain
             }
 
             else -> {
-                weather.weatherDayIcon = if (largeFlag) R.drawable.icon_weather_default_l
-                else R.drawable.icon_weather_default_s
+                R.drawable.icon_weather_default
             }
         }
+        weather.weatherNightIcon = weatherNightIcon
     }
 }

@@ -27,6 +27,11 @@ public class WindowMessage implements Parcelable{
      */
     private String action;
 
+    /**
+     *  屏幕的位置
+     */
+    private int screenType;
+
 
     public WindowMessage() {
     }
@@ -36,14 +41,16 @@ public class WindowMessage implements Parcelable{
         this.action = action;
     }
 
-    public WindowMessage(String name, String action, WindowMessageInfo messageInfo) {
+    public WindowMessage(String name, String action, int screenType) {
         this.name = name;
         this.action = action;
+        this.screenType = screenType;
     }
 
     protected WindowMessage(Parcel in) {
         name = in.readString();
         action = in.readString();
+        screenType = in.readInt();
     }
 
     public static final Creator<WindowMessage> CREATOR = new Creator<WindowMessage>() {
@@ -74,17 +81,34 @@ public class WindowMessage implements Parcelable{
         this.action = action;
     }
 
+    public int getScreenType() {
+        return screenType;
+    }
+
+    public void setScreenType(int screenType) {
+        this.screenType = screenType;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         WindowMessage that = (WindowMessage) o;
-        return Objects.equals(name, that.name) && Objects.equals(action, that.action) ;
+        return screenType == that.screenType && Objects.equals(name, that.name) && Objects.equals(action, that.action);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, action);
+        return Objects.hash(name, action, screenType);
+    }
+
+    @Override
+    public String toString() {
+        return "WindowMessage{" +
+                "name='" + name + '\'' +
+                ", action='" + action + '\'' +
+                ", screenType=" + screenType +
+                '}';
     }
 
     @Override
@@ -96,5 +120,8 @@ public class WindowMessage implements Parcelable{
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeString(action);
+        dest.writeInt(screenType);
     }
+
+
 }

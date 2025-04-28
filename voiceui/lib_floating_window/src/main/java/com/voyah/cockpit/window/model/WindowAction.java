@@ -18,7 +18,9 @@ import java.lang.annotation.RetentionPolicy;
         WindowAction.WINDOW_ACTION_COLLAPSE_CARD,
         WindowAction.WINDOW_ACTION_INPUT_TYPEWRITER,
         WindowAction.WINDOW_ACTION_SET_VOICE_STATE,
-        WindowAction.WINDOW_ACTION_CARD_USER_TOUCH})
+        WindowAction.WINDOW_ACTION_CARD_USER_TOUCH,
+        WindowAction.WINDOW_ACTION_ITEM_CLICK,
+        WindowAction.WINDOW_ACTION_INTERACTION_IN_CARD})
 @Retention(RetentionPolicy.SOURCE)
 public @interface WindowAction {
     String WINDOW_ACTION_SHOW = "window_action_show";
@@ -32,4 +34,8 @@ public @interface WindowAction {
     String WINDOW_ACTION_INPUT_TYPEWRITER = "window_action_input_typewriter";
     String WINDOW_ACTION_SET_VOICE_STATE = "window_action_SET_VOICE_STATE";
     String WINDOW_ACTION_CARD_USER_TOUCH = "window_action_card_user_touch";
+
+    String WINDOW_ACTION_ITEM_CLICK = "window_action_item_click";
+
+    String WINDOW_ACTION_INTERACTION_IN_CARD = "window_action_interaction_in_card";
 }

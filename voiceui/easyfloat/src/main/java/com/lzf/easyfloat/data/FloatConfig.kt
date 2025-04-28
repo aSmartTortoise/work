@@ -90,6 +90,13 @@ data class FloatConfig @RequiresApi(Build.VERSION_CODES.O) constructor(
     var cardExpand: Boolean = false,
     // 标识window中的View是否能消费用户触摸事件
     var touchable: Boolean = true,
-    var windowParamsType: Int = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+    var windowParamsType: Int = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
+    var currentLocationX: Int = locationPair.first,
+    var currentLocationY: Int = locationPair.second,
+    // 是否正在show；如果没设置动画，在调用windowManager#addView，之前设置floatingView为invisible，然后
+    // 当ParentFrameLayout 第一次调用onLayout方法后，才设置floatingView 为visible，定义该字段
+    // 是为了能更详尽低描述floatingView的可见状态
+    var isShowing: Boolean = false,
+    var displayId: Int = -1
 
 )

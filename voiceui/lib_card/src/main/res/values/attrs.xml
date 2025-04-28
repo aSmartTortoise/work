@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 搜索框 -->
+    <declare-styleable name="SearchBox">
+        <!-- 搜索框的文字 -->
+        <attr name="sv_text" format="string"/>
+        <!-- 提示文字 -->
+        <attr name="sv_hint" format="string"/>
+        <!-- 字体大小 -->
+        <attr name="sv_textSize" format="dimension"/>
+        <!-- 是否隐藏搜索图标 -->
+        <attr name="sv_hideImg" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="DialPadButton">
+        <attr name="num" format="string" />
+        <attr name="tag" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="FlowLayout">
+        <attr name="lineSpace" format="dimension" />
+        <attr name="weightLevelSpace" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="ButtonFlowLayout">
+        <attr name="itemNormalBackground" format="reference" />
+        <attr name="itemSelectedBackground" format="reference" />
+    </declare-styleable>
+
+    <!-- 温度小彩条 -->
+    <declare-styleable name="TemperatureChart">
+        <attr name="background_color" format="reference" />
+        <attr name="height" format="dimension" />
+        <attr name="width" format="dimension" />
+        <!--进度上面的色-->
+        <attr name="color_top" format="reference" />
+        <!--进度下面的色-->
+        <attr name="color_bottom" format="reference" />
+        <!--圆角矩形半径-->
+        <attr name="bg_radius" format="dimension" />
+    </declare-styleable>
+
+</resources>

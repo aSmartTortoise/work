@@ -30,9 +30,7 @@ class VoyahWindowApplication() : IApplicationLifecycleCallbacks {
     override fun onCreate(context: Context?) {
         this.context = context
         Log.d(TAG, "onCreate")
-        if (BuildConfig.DEBUG) {
-            bindService(context!!)
-        }
+        bindService(context!!)
     }
 
     override fun onTerminate() {
@@ -45,30 +43,42 @@ class VoyahWindowApplication() : IApplicationLifecycleCallbacks {
     }
 
     private fun bindService(context: Context) {
-        WindowMessageManager.getInstance().init(context)
-        WindowMessageManager.getInstance().setMessageCallback(object : WindowMessageCallback {
-            override fun onServiceBind() {
-                Log.d(TAG, "onServiceBind")
-            }
-
-            override fun onReceiveWindowMessage(msg: WindowMessage) {
-                when (msg.name) {
-                    WindowType.WINDOW_TYPE_VPA_TYPEWRITER_CARD -> {
-                        val msgAction = msg.action
-                        LogUtils.d("msg:$msgAction")
+        if (BuildConfig.DEBUG) {
+            Thread {
+                WindowMessageManager.getInstance().setMessageCallback(object : WindowMessageCallback {
+                    override fun onServiceBind() {
+                        Log.d(TAG, "onServiceBind")
                     }
 
-                    else -> {}
-                }
-            }
+                    override fun onServiceDisconnected() {
 
-            override fun onReceiveVoyahWindowMessage(msgJson: String) {
-                Log.d(TAG, "onReceiveVoyahWindowMessage: msgJson:$msgJson")
-            }
+                    }
 
-            override fun onCardScroll(cardType: String, direction: Int, canScroll: Boolean) {
-                Log.d(TAG, "onCardScroll cardType:$cardType, direction:$direction, canScroll:$canScroll")
-            }
-        })
+                    override fun onBinderDied() {
+                    }
+
+                    override fun onReceiveWindowMessage(msg: WindowMessage) {
+                        when (msg.name) {
+                            WindowType.WINDOW_TYPE_VPA_TYPEWRITER_CARD -> {
+                                val msgAction = msg.action
+                                LogUtils.d("msg:$msgAction")
+                            }
+
+                            else -> {}
+                        }
+                    }
+
+                    override fun onReceiveVoyahWindowMessage(msgJson: String) {
+                        Log.d(TAG, "onReceiveVoyahWindowMessage: msgJson:$msgJson")
+                    }
+
+                    override fun onCardScroll(cardType: String, direction: Int, canScroll: Boolean) {
+                        Log.d(TAG, "onCardScroll cardType:$cardType, direction:$direction, canScroll:$canScroll")
+                    }
+                })
+                WindowMessageManager.getInstance().init(context)
+            }.start()
+
+        }
     }
 }

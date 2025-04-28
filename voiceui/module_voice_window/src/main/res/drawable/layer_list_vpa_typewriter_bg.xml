@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:left="-3dp"
+        android:top="-3dp">
+        <shape android:shape="rectangle" >
+            <!--这里可以是梯度的值，也可以是solid，看实际的效果自己调测-->
+            <solid android:color="#ff0000" />
+            <corners
+                android:bottomLeftRadius="64dip"
+                android:bottomRightRadius="64dip"
+                android:topLeftRadius="64dip"
+                android:topRightRadius="64dip" />
+        </shape>
+    </item>
+
+    <item
+        android:bottom="3dp"
+        android:right="3dp">
+        <shape android:shape="rectangle" >
+            <solid android:color="#e6EEF2FF"/>
+            <corners
+                android:bottomLeftRadius="64dip"
+                android:bottomRightRadius="64dip"
+                android:topLeftRadius="64dip"
+                android:topRightRadius="64dip" />
+        </shape>
+    </item>
+</layer-list>
+

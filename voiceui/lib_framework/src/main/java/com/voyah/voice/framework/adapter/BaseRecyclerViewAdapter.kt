@@ -10,6 +10,8 @@ import android.widget.LinearLayout
 import androidx.annotation.IntRange
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
+import com.blankj.utilcode.util.ClickUtils
+import com.blankj.utilcode.util.LogUtils
 
 /**
  * @author jie wang
@@ -99,14 +101,25 @@ abstract class BaseRecyclerViewAdapter<T, B : ViewBinding> : RecyclerView.Adapte
      */
     protected open fun bindViewClickListener(holder: BaseViewHolder) {
         onItemClickListener?.let {
-            holder.itemView.setOnClickListener { v ->
-                var position = holder.adapterPosition
-                if (position == RecyclerView.NO_POSITION) {
-                    return@setOnClickListener
+            ClickUtils.applySingleDebouncing(holder.itemView, object : View.OnClickListener {
+                override fun onClick(v: View?) {
+                    LogUtils.d("bindViewClickListener onClick...")
+                    var position = holder.adapterPosition
+                    if (position != RecyclerView.NO_POSITION) {
+                        position -= headerLayoutCount
+                        it.invoke(holder.itemView, position)
+                    }
                 }
-                position -= headerLayoutCount
-                it.invoke(holder.itemView, position)
-            }
+
+            })
+//            holder.itemView.setOnClickListener { v ->
+//                var position = holder.adapterPosition
+//                if (position == RecyclerView.NO_POSITION) {
+//                    return@setOnClickListener
+//                }
+//                position -= headerLayoutCount
+//                it.invoke(holder.itemView, position)
+//            }
         }
         onItemLongClickListener?.let {
             holder.itemView.setOnLongClickListener { v ->

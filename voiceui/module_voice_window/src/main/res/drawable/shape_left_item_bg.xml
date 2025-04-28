@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<shape xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:shape="rectangle">-->
+<!--    <stroke-->
+<!--        android:width="1dp"-->
+<!--        android:color="#6615181D"/>-->
+<!--    <padding android:left="1dp"/>-->
+
+<!--</shape>-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 左边框 -->
+    <item android:left="1dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" /> <!-- 背景透明 -->
+            <stroke
+                android:width="1dp"
+                android:color="#808080" /> <!-- 边框颜色为灰色 -->
+        </shape>
+    </item>
+</layer-list>

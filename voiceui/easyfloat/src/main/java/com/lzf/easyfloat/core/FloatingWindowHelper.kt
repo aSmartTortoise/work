@@ -7,10 +7,26 @@ import android.app.Service
 import android.content.Context
 import android.graphics.PixelFormat
 import android.graphics.Rect
+import android.hardware.display.DisplayManager
 import android.os.Build
 import android.os.IBinder
-import android.view.*
-import android.view.WindowManager.LayoutParams.*
+import android.util.Log
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.MotionEvent
+import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
+import android.view.WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+import android.view.WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+import android.view.WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+import android.view.WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+import android.view.WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH
+import android.view.WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
+import android.view.WindowManager.LayoutParams.MATCH_PARENT
+import android.view.WindowManager.LayoutParams.TYPE_APPLICATION_PANEL
+import android.view.WindowManager.LayoutParams.TYPE_PHONE
+import android.view.WindowManager.LayoutParams.WRAP_CONTENT
 import android.widget.EditText
 import com.lzf.easyfloat.WARN_ACTIVITY_NULL
 import com.lzf.easyfloat.anim.AnimatorManager
@@ -30,6 +46,10 @@ import com.lzf.easyfloat.widget.ParentFrameLayout
  */
 internal class FloatingWindowHelper(val context: Context, var config: FloatConfig) {
 
+    companion object {
+        const val TAG = "FloatingWindowHelper"
+    }
+
     interface CreateCallback {
         fun onCreate(success: Boolean)
     }
@@ -39,6 +59,7 @@ internal class FloatingWindowHelper(val context: Context, var config: FloatConfi
     var frameLayout: ParentFrameLayout? = null
     private lateinit var touchUtils: TouchUtils
     private var enterAnimator: Animator? = null
+    private var exitAnimator: Animator? = null
     private var lastLayoutMeasureWidth = -1
     private var lastLayoutMeasureHeight = -1
 
@@ -59,7 +80,6 @@ internal class FloatingWindowHelper(val context: Context, var config: FloatConfi
         touchUtils = TouchUtils(context, config)
         initParams()
         addView()
-        config.isShow = true
         true
     } catch (e: Exception) {
         config.callbacks?.createdResult(false, "$e", null)
@@ -68,7 +88,20 @@ internal class FloatingWindowHelper(val context: Context, var config: FloatConfi
     }
 
     private fun initParams() {
-        windowManager = context.getSystemService(Service.WINDOW_SERVICE) as WindowManager
+
+        windowManager = if (config.displayId == -1) {
+            context.getSystemService(Service.WINDOW_SERVICE) as WindowManager
+        } else {
+            val displayManager = context.getSystemService(DisplayManager::class.java) as DisplayManager
+            val display = displayManager.getDisplay(config.displayId)
+            if (display != null) {
+                val displayContext = context.createDisplayContext(display)
+                displayContext.getSystemService(Service.WINDOW_SERVICE) as WindowManager
+            } else {
+                context.getSystemService(Service.WINDOW_SERVICE) as WindowManager
+            }
+        }
+
         params = WindowManager.LayoutParams().apply {
             if (config.showPattern == ShowPattern.CURRENT_ACTIVITY) {
                 // 设置窗口类型为应用子窗口，和PopupWindow同类型
@@ -85,14 +118,8 @@ internal class FloatingWindowHelper(val context: Context, var config: FloatConfi
             }
             format = PixelFormat.RGBA_8888
             gravity = Gravity.START or Gravity.TOP
-            // 设置浮窗以外的触摸事件可以传递给后面的窗口、不自动获取焦点
-            var flagVar = if (config.immersionStatusBar)
-            // 没有边界限制，允许窗口扩展到屏幕外
-                FLAG_NOT_TOUCH_MODAL or FLAG_NOT_FOCUSABLE or FLAG_LAYOUT_NO_LIMITS
-            else FLAG_NOT_TOUCH_MODAL or FLAG_NOT_FOCUSABLE
-            if (config.watchOutside) flagVar = flagVar or FLAG_WATCH_OUTSIDE_TOUCH
-            if (!config.touchable) flagVar = flagVar or FLAG_NOT_TOUCHABLE
-            flags = flagVar
+
+            flags = getParamsFlags()
 
             width = if (config.widthMatch) MATCH_PARENT else WRAP_CONTENT
             height = if (config.heightMatch) MATCH_PARENT else WRAP_CONTENT
@@ -138,6 +165,8 @@ internal class FloatingWindowHelper(val context: Context, var config: FloatConfi
                 touchUtils.updateFloat(frameLayout!!, event, windowManager, params)
         }
 
+        config.isShowing = true
+
         // 在浮窗绘制完成的时候，设置初始坐标、执行入场动画
         frameLayout?.layoutListener = object : ParentFrameLayout.OnLayoutListener {
             override fun onLayout() {
@@ -159,7 +188,6 @@ internal class FloatingWindowHelper(val context: Context, var config: FloatConfi
                     invokeView?.invoke(floatingView)
                     callbacks?.createdResult(true, null, floatingView)
                     floatCallbacks?.builder?.createdResult?.invoke(true, null, floatingView)
-                    floatCallbacks?.builder?.show?.invoke(floatingView)
                 }
             }
         }
@@ -339,7 +367,8 @@ internal class FloatingWindowHelper(val context: Context, var config: FloatConfi
         enterAnimator = AnimatorManager(frameLayout!!, params, windowManager, config)
             .enterAnim()?.apply {
                 // 可以延伸到屏幕外，动画结束按需去除该属性，不然旋转屏幕可能置于屏幕外部
-                var flagVar = FLAG_NOT_TOUCH_MODAL or FLAG_NOT_FOCUSABLE or FLAG_LAYOUT_NO_LIMITS
+                var flagVar =
+                    FLAG_NOT_TOUCH_MODAL or FLAG_NOT_FOCUSABLE or FLAG_LAYOUT_IN_SCREEN or FLAG_LAYOUT_NO_LIMITS
                 if (config.watchOutside) flagVar = flagVar or FLAG_WATCH_OUTSIDE_TOUCH
                 if (!config.touchable) flagVar = flagVar or FLAG_NOT_TOUCHABLE
                 params.flags = flagVar
@@ -349,20 +378,26 @@ internal class FloatingWindowHelper(val context: Context, var config: FloatConfi
                     override fun onAnimationRepeat(animation: Animator) {}
 
                     override fun onAnimationEnd(animation: Animator) {
+                        Log.d(TAG, "onAnimationEnd: enter anim.")
                         config.isAnim = false
                         if (!config.immersionStatusBar) {
                             // 不需要延伸到屏幕外了，防止屏幕旋转的时候，浮窗处于屏幕外
-                            var flagVar = FLAG_NOT_TOUCH_MODAL or FLAG_NOT_FOCUSABLE
+                            var flagVar = FLAG_NOT_TOUCH_MODAL or FLAG_NOT_FOCUSABLE or FLAG_LAYOUT_IN_SCREEN
                             if (config.watchOutside) flagVar = flagVar or FLAG_WATCH_OUTSIDE_TOUCH
                             if (!config.touchable) flagVar = flagVar or FLAG_NOT_TOUCHABLE
                             params.flags = flagVar
                         }
                         initEditText()
+                        config.isShow = true
+                        config.isShowing = false
+                        config.callbacks?.show(floatingView)
+                        config.floatCallbacks?.builder?.show?.invoke(floatingView)
                     }
 
                     override fun onAnimationCancel(animation: Animator) {}
 
                     override fun onAnimationStart(animation: Animator) {
+                        Log.d(TAG, "onAnimationStart: enter anim.")
                         floatingView.visibility = View.VISIBLE
                         config.isAnim = true
                     }
@@ -371,6 +406,10 @@ internal class FloatingWindowHelper(val context: Context, var config: FloatConfi
             }
         if (enterAnimator == null) {
             floatingView.visibility = View.VISIBLE
+            config.isShow = true
+            config.isShowing = false
+            config.callbacks?.show(floatingView)
+            config.floatCallbacks?.builder?.show?.invoke(floatingView)
             windowManager.updateViewLayout(frameLayout, params)
         }
     }
@@ -381,26 +420,33 @@ internal class FloatingWindowHelper(val context: Context, var config: FloatConfi
     fun exitAnim() {
         if (frameLayout == null || (config.isAnim && enterAnimator == null)) return
         enterAnimator?.cancel()
-        val animator: Animator? =
+        exitAnimator =
             AnimatorManager(frameLayout!!, params, windowManager, config).exitAnim()
-        if (animator == null) remove() else {
+        if (exitAnimator == null) remove() else {
             // 二次判断，防止重复调用引发异常
             if (config.isAnim) return
             config.isAnim = true
-            var flagVar = FLAG_NOT_TOUCH_MODAL or FLAG_NOT_FOCUSABLE or FLAG_LAYOUT_NO_LIMITS
+            var flagVar = FLAG_NOT_TOUCH_MODAL or FLAG_NOT_FOCUSABLE or FLAG_LAYOUT_IN_SCREEN or FLAG_LAYOUT_NO_LIMITS
             if (config.watchOutside) flagVar = flagVar or FLAG_WATCH_OUTSIDE_TOUCH
             if (!config.touchable) flagVar = flagVar or FLAG_NOT_TOUCHABLE
             params.flags = flagVar
-            animator.addListener(object : Animator.AnimatorListener {
+            exitAnimator?.addListener(object : Animator.AnimatorListener {
                 override fun onAnimationRepeat(animation: Animator) {}
 
-                override fun onAnimationEnd(animation: Animator) = remove()
+                override fun onAnimationEnd(animation: Animator) {
+                    Log.d(TAG, "onAnimationEnd: exit anim ...")
+                    remove(force = true)
+                }
 
-                override fun onAnimationCancel(animation: Animator) {}
+                override fun onAnimationCancel(animation: Animator) {
+                    Log.d(TAG, "onAnimationCancel: cancel anim ...")
+                }
 
-                override fun onAnimationStart(animation: Animator) {}
+                override fun onAnimationStart(animation: Animator) {
+                    Log.d(TAG, "onAnimationStart: exit anim ...")
+                }
             })
-            animator.start()
+            exitAnimator?.start()
         }
     }
 
@@ -430,8 +476,50 @@ internal class FloatingWindowHelper(val context: Context, var config: FloatConfi
                 if (width != -1) params.width = width
                 if (height != -1) params.height = height
                 windowManager.updateViewLayout(it, params)
+                config.let { config ->
+                    if (x != -1) config.currentLocationX = x
+                    if (y != -1) config.currentLocationY = y
+                }
             }
         }
+    }
+
+    fun getParamsFlags(): Int {
+        // 设置浮窗以外的触摸事件可以传递给后面的窗口、不自动获取焦点
+        var flagVar = if (config.immersionStatusBar)
+        // 没有边界限制，允许窗口扩展到屏幕外
+            FLAG_NOT_TOUCH_MODAL or FLAG_NOT_FOCUSABLE or FLAG_LAYOUT_IN_SCREEN or FLAG_LAYOUT_NO_LIMITS
+        else FLAG_NOT_TOUCH_MODAL or FLAG_NOT_FOCUSABLE or FLAG_LAYOUT_IN_SCREEN
+        if (config.watchOutside) flagVar = flagVar or FLAG_WATCH_OUTSIDE_TOUCH
+        if (!config.touchable) flagVar = flagVar or FLAG_NOT_TOUCHABLE
+        return flagVar
+    }
+
+    fun isExitAnimRunning(): Boolean {
+        Log.i(TAG, "isExitAnimRunning: exitAnimator:$exitAnimator")
+        return exitAnimator?.isRunning?: false
+    }
+
+    fun isEnterAnimRunning(): Boolean {
+        return enterAnimator?.isRunning?: false
+    }
+
+    fun cancelExitAnim() {
+        Log.i(TAG, "cancelExitAnim: exitAnimator:$exitAnimator")
+        exitAnimator?.cancel()
+        exitAnimator = null
+    }
+
+    fun cancelEnterAnim() {
+        enterAnimator?.cancel()
+        enterAnimator = null
+    }
+
+    fun setWatchOutSide(watchOutside: Boolean = false) {
+        Log.i(TAG, "setWatchOutSide: watchOutside:$watchOutside")
+        config.watchOutside = watchOutside
+        params.flags = getParamsFlags()
+        windowManager.updateViewLayout(frameLayout, params)
     }
 }
 

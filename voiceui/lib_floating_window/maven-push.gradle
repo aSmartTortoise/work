@@ -7,7 +7,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.voyah'
             artifactId = 'floating-window'
-            version = '1.1.1'
+            version = '2.0.4'
 
             afterEvaluate {
                 from components.release //software component name is release.
