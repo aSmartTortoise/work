@@ -1,0 +1,97 @@
+import java.text.SimpleDateFormat
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.hm.plugin.lifecycle'
+}
+
+def android_config = rootProject.ext.android
+def depLibs = rootProject.ext.depsLibs
+
+static def packageTime() {
+    return new SimpleDateFormat("yyyyMMddHHmm").format(new Date())
+}
+
+android {
+    namespace 'com.voyah.voice.ui'
+    compileSdk android_config.compileSdk
+    println("build.gradle minSdk:${android_config.minSdk}")
+
+    defaultConfig {
+        applicationId android_config.applicationId
+        minSdk android_config.minSdk
+        targetSdk android_config.targetSdk
+        versionCode android_config.versionCode
+        versionName android_config.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        H37_8295 {
+            storeFile file("../key_store/h37_8295/aosp.keystore")
+            storePassword "android"
+            keyAlias "platform"
+            keyPassword "android"
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.H37_8295
+        }
+
+        debug {
+            signingConfig signingConfigs.H37_8295
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+
+    applicationVariants.all { variant ->
+        def path = "${rootProject.name}_${variant.flavorName}_${variant.buildType.name}"+
+                "_${variant.versionName}_${packageTime()}.apk"
+        variant.outputs.all { output ->
+//            output.outputFileName = path
+            assembleRelease.doLast{
+                project.copy{
+                    from "${output.outputFile}"
+                    into "${output.outputFile.parent}"
+                    rename("${output.outputFile.name}","${path}")
+                    println "copy file from ${output.outputFile} to ${path}"
+                }
+            }
+        }
+
+
+    }
+}
+println("build.gradle depLibs:${depLibs.coreKtx}")
+dependencies {
+
+    implementation depLibs.coreKtx
+    implementation depLibs.appcompat
+    implementation depLibs.material
+    implementation depLibs.constraintlayout
+    testImplementation depLibs.junit
+    androidTestImplementation depLibs.extJunit
+    androidTestImplementation depLibs.espressoCore
+
+    implementation project(path: ':module_voice_window')
+    implementation project(path: ':lib_framework')
+}

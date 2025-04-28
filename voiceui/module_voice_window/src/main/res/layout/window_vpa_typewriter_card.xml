@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_content"
+    android:layout_width="@dimen/dp_230"
+    android:layout_height="wrap_content"
+    android:background="@drawable/vpa_typewriter_card_bg"
+    android:orientation="vertical"
+    tools:ignore="RtlSymmetry">
+
+    <LinearLayout
+        android:id="@+id/ll_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_12"
+        android:paddingEnd="@dimen/dp_24"
+        android:paddingBottom="@dimen/dp_12">
+
+        <org.libpag.PAGImageView
+            android:id="@+id/pag_vpa"
+            android:layout_width="@dimen/dp_64"
+            android:layout_height="@dimen/dp_64" />
+
+        <TextView
+            android:paddingTop="@dimen/dp_8"
+            android:paddingBottom="@dimen/dp_8"
+            android:id="@+id/typewriter_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_24"
+            android:text="@string/voice_state_listening"
+            android:textColor="@color/white_ccFFFFFF"
+            android:textSize="@dimen/sp_28" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_card_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/gray_14FFFFFF"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

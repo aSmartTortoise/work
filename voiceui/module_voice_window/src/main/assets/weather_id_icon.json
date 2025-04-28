@@ -1,0 +1,266 @@
+[
+	{
+		"weather": "晴",
+		"weatherId": "1,2,3,4,5,6,7",
+		"weatherDayIcon": 1,
+		"weatherNightIcon": 1
+	},
+	{
+		"weather": "大部晴朗",
+		"weatherId": "6,7",
+		"weatherDayIcon": 1,
+		"weatherNightIcon": 1
+	},
+	{
+		"weather": "多云",
+		"weatherId": "8,9,10,11,80,81,82",
+		"weatherDayIcon": 2,
+		"weatherNightIcon": 2
+	},
+	{
+		"weather": "少云",
+		"weatherId": "12",
+		"weatherDayIcon": 3,
+		"weatherNightIcon": 3
+	},
+	{
+		"weather": "阴",
+		"weatherId": "13,14,36,85",
+		"weatherDayIcon": 4,
+		"weatherNightIcon": 4
+	},
+	{
+		"weather": "阵雨",
+		"weatherId": "15,16,17,18,19,86",
+		"weatherDayIcon": 5,
+		"weatherNightIcon": 5
+	},
+	{
+		"weather": "局部阵雨",
+		"weatherId": "20,21",
+		"weatherDayIcon": 5,
+		"weatherNightIcon": 5
+	},
+	{
+		"weather": "小阵雨",
+		"weatherId": "22",
+		"weatherDayIcon": 6,
+		"weatherNightIcon": 6
+	},
+	{
+		"weather": "强阵雨",
+		"weatherId": "23",
+		"weatherDayIcon": 7,
+		"weatherNightIcon": 7
+	},
+	{
+		"weather": "阵雪",
+		"weatherId": "24",
+		"weatherDayIcon": 8,
+		"weatherNightIcon": 8
+	},
+	{
+		"weather": "小阵雪",
+		"weatherId": "25",
+		"weatherDayIcon": 9,
+		"weatherNightIcon": 9
+	},
+	{
+		"weather": "雾",
+		"weatherId": "26,27,83,84",
+		"weatherDayIcon": 10,
+		"weatherNightIcon": 10
+	},
+	{
+		"weather": "冻雾",
+		"weatherId": "28",
+		"weatherDayIcon": 11,
+		"weatherNightIcon": 11
+	},
+	{
+		"weather": "沙尘暴",
+		"weatherId": "29",
+		"weatherDayIcon": 12,
+		"weatherNightIcon": 12
+	},
+	{
+		"weather": "浮尘",
+		"weatherId": "30",
+		"weatherDayIcon": 13,
+		"weatherNightIcon": 13
+	},
+	{
+		"weather": "尘卷风",
+		"weatherId": "31",
+		"weatherDayIcon": 14,
+		"weatherNightIcon": 14
+	},
+	{
+		"weather": "扬沙",
+		"weatherId": "32",
+		"weatherDayIcon": 15,
+		"weatherNightIcon": 15
+	},
+	{
+		"weather": "强沙尘暴",
+		"weatherId": "33",
+		"weatherDayIcon": 16,
+		"weatherNightIcon": 16
+	},
+	{
+		"weather": "霾",
+		"weatherId": "34,35,79",
+		"weatherDayIcon": 17,
+		"weatherNightIcon": 17
+	},
+	{
+		"weather": "雷阵雨",
+		"weatherId": "37,38,39,40,41,87,88,89,90",
+		"weatherDayIcon": 18,
+		"weatherNightIcon": 18
+	},
+	{
+		"weather": "雷电",
+		"weatherId": "42",
+		"weatherDayIcon": 19,
+		"weatherNightIcon": 19
+	},
+	{
+		"weather": "雷暴",
+		"weatherId": "43",
+		"weatherDayIcon": 20,
+		"weatherNightIcon": 20
+	},
+	{
+		"weather": "雷阵雨伴有冰雹",
+		"weatherId": "44,45",
+		"weatherDayIcon": 21,
+		"weatherNightIcon": 21
+	},
+	{
+		"weather": "冰雹",
+		"weatherId": "46",
+		"weatherDayIcon": 22,
+		"weatherNightIcon": 22
+	},
+	{
+		"weather": "冰针",
+		"weatherId": "47",
+		"weatherDayIcon": 23,
+		"weatherNightIcon": 23
+	},
+	{
+		"weather": "冰粒",
+		"weatherId": "48",
+		"weatherDayIcon": 23,
+		"weatherNightIcon": 23
+	},
+	{
+		"weather": "雨夹雪",
+		"weatherId": "49,50",
+		"weatherDayIcon": 24,
+		"weatherNightIcon": 24
+	},
+	{
+		"weather": "小雨",
+		"weatherId": "51,52,66",
+		"weatherDayIcon": 25,
+		"weatherNightIcon": 25
+	},
+	{
+		"weather": "小到中雨",
+		"weatherId": "91",
+		"weatherDayIcon": 25,
+		"weatherNightIcon": 25
+	},
+	{
+		"weather": "中雨",
+		"weatherId": "53,67",
+		"weatherDayIcon": 26,
+		"weatherNightIcon": 26
+	},
+	{
+		"weather": "雨",
+		"weatherId": "78",
+		"weatherDayIcon": 26,
+		"weatherNightIcon": 26
+	},
+	{
+		"weather": "中到大雨",
+		"weatherId": "92",
+		"weatherDayIcon": 26,
+		"weatherNightIcon": 26
+	},
+	{
+		"weather": "大雨",
+		"weatherId": "54,68",
+		"weatherDayIcon": 27,
+		"weatherNightIcon": 27
+	},
+	{
+		"weather": "大到暴雨",
+		"weatherId": "93",
+		"weatherDayIcon": 27,
+		"weatherNightIcon": 27
+	},
+	{
+		"weather": "暴雨",
+		"weatherId": "55",
+		"weatherDayIcon": 28,
+		"weatherNightIcon": 28
+	},
+	{
+		"weather": "大暴雨",
+		"weatherId": "56,69,70",
+		"weatherDayIcon": 29,
+		"weatherNightIcon": 29
+	},
+	{
+		"weather": "特大暴雨",
+		"weatherId": "57",
+		"weatherDayIcon": 30,
+		"weatherNightIcon": 30
+	},
+	{
+		"weather": "小雪",
+		"weatherId": "58,59,71,72,73",
+		"weatherDayIcon": 31,
+		"weatherNightIcon": 31
+	},
+	{
+		"weather": "小到中雪",
+		"weatherId": "94",
+		"weatherDayIcon": 31,
+		"weatherNightIcon": 31
+	},
+	{
+		"weather": "中雪",
+		"weatherId": "60,61",
+		"weatherDayIcon": 32,
+		"weatherNightIcon": 32
+	},
+	{
+		"weather": "雪",
+		"weatherId": "77",
+		"weatherDayIcon": 32,
+		"weatherNightIcon": 32
+	},
+	{
+		"weather": "大雪",
+		"weatherId": "62,74,75,76",
+		"weatherDayIcon": 33,
+		"weatherNightIcon": 33
+	},
+	{
+		"weather": "暴雪",
+		"weatherId": "63",
+		"weatherDayIcon": 34,
+		"weatherNightIcon": 34
+	},
+	{
+		"weather": "冻雨",
+		"weatherId": "64,65",
+		"weatherDayIcon": 36,
+		"weatherNightIcon": 36
+	}
+]
