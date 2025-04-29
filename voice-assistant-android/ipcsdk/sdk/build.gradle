@@ -1,0 +1,76 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.kezong.fat-aar'
+apply plugin: 'maven-publish'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    libraryVariants.all { variant ->
+        variant.outputs.all { output ->
+            if (variant.buildType.name == "release") {
+                def outputFileName = "VoiceSDK-1.5-${versionCodeDate}.aar"
+
+                // 对于旧版本的Gradle，直接设置outputFileName属性
+                output.outputFileName = new File(outputFileName)
+            }
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        ignoreWarnings true
+    }
+}
+
+dependencies {
+    embed project(path: ':ipcsdk:contract') //打包时需要改成embed
+    compileOnly "com.alibaba:fastjson:1.2.83"
+    compileOnly 'com.google.code.gson:gson:2.8.5'
+    implementation rootProject.ext.dependencies.appcompat
+}
+
+
+// 配置发布的库信息
+def libraryGroupId = 'com.voyah.ai.voice.sdk'
+def libraryArtifactId = 'voice-export-sdk'
+def libraryVersion = '1.0-SNAPSHOT'
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId libraryGroupId
+            artifactId libraryArtifactId
+            version libraryVersion
+
+            artifact("$buildDir/outputs/aar/VoiceSDK-Vcos10-20240920.aar")
+        }
+    }
+    repositories {
+        maven {
+            def snapshotsRepoUrl = 'http://10.223.105.162:8084/repository/voyah-snapshots/'
+            allowInsecureProtocol true
+            url = snapshotsRepoUrl
+            credentials {
+                username "nexus_dn"
+                password "nexus123"
+            }
+        }
+    }
+}

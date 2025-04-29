@@ -1,0 +1,53 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ExtraTranslation">
+
+    <string name="tts_weather_date_search_success">%1$s%2$s，白天天气%3$s，夜间天气%4$s，最低温度%5$s°C，最高温度%6$s°C，%7$s</string>
+    <string name="tts_weather_date_range_search_success">%1$s%2$s，天气%3$s为主，最低温度%4$s°C，最高温度%5$s°C</string>
+
+    <!--    武汉5月1日18点天气晴气温2°C。-->
+    <string name="tts_weather_time_search_success">%1$s%2$s，天气%3$s，气温%4$s°C</string>
+    <!--    武汉市汉阳区5月1日，温差4°C，最低温度-2°C，最高温度2°C-->
+    <string name="tts_weather_tem_diff_day_search_success">%1$s%2$s，温差%3$s°C，最低温度%4$s°C，最高温度%5$s°C</string>
+
+    <!--    武汉市汉阳区5月1日，白天东风4级，夜间东风，4级-->
+    <string name="tts_weather_wind_day_search_success">%1$s%2$s，白天%3$s%4$s级，夜间%5$s%6$s级</string>
+
+    <!--    5月1日，白天东风4级，夜间东风4级-->
+    <string name="tts_weather_wind_search">%1$s，白天%2$s%3$s级，夜间%4$s%5$s级</string>
+
+    <!--    武汉市汉阳区5月1日18点，东风4级-->
+    <string name="tts_weather_wind_time_search">%1$s%2$s，%3$s%4$s级</string>
+
+    <!--    5月1日18点，东风4级-->
+    <string name="tts_weather_wind_time_range_search">%1$s，%2$s%3$s级</string>
+
+    <!--    武汉市汉阳区5月1，没有雨，白天天气晴，夜间天气晴-->
+    <string name="tts_weather_interest_day_search">%1$s%2$s，%3$s，白天天气%4$s，夜间天气%5$s</string>
+
+    <!--    武汉市汉阳区5月1日18点，没有雨，天气晴-->
+    <string name="tts_weather_interest_time_search">%1$s%2$s，%3$s，天气%4$s</string>
+
+    <!--    武汉市汉阳区5月1日到5月3日，没有雨，天气晴为主-->
+    <string name="tts_weather_interest_day_range_search">%1$s%2$s，%3$s，天气%4$s为主</string>
+
+    <!--    5月1日，6点10分 日出， 18点20分 日落-->
+    <string name="tts_weather_sun_rise_down_day_search">%1$s，%2$s 日出 %3$s 日落</string>
+
+    <!--    5月1，空气质量轻微污染-->
+    <string name="tts_weather_aqi_search">%1$s，空气质量%2$s</string>
+
+    <!--    5月1日，感冒指数易发，感冒容易发生，少去人群密集的场所有利于降低感冒的几率-->
+    <string name="tts_weather_life_index_search">%1$s，%2$s，%3$s，%4$s</string>
+
+    <string name="tts_weather_query_no_data">对不起，没有查到天气数据。</string>
+
+
+    <string-array name="view_cmd_reply">
+        <item>好的</item>
+        <item>OK</item>
+        <item>没问题</item>
+        <item>好啦</item>
+    </string-array>
+
+
+
+</resources>

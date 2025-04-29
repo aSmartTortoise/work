@@ -1,0 +1,10 @@
+{
+  "systemControl#switch": [
+
+  ],
+  "carSetting_safetyMonitor#adjust": [
+    {
+      "adjust_type": "set"
+    }
+  ]
+}

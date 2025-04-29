@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/rl_trace_panel"
+            android:layout_width="600dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_settings_item"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_trace_panel"
+                style="@style/common_text_title"
+                android:text="@string/settings_item_trace_panel" />
+
+            <TextView
+                style="@style/common_text_content"
+                android:layout_below="@+id/tv_trace_panel"
+                android:layout_marginTop="8dp"
+                android:text="@string/settings_item_trace_panel_tips" />
+
+            <Switch
+                android:id="@+id/sw_trace_panel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:thumb="@drawable/common_switch_thumb_selector"
+                android:track="@drawable/common_switch_track_selector"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_all_network"
+            android:layout_width="600dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:background="@drawable/shape_settings_item"
+            android:padding="16dp"
+            app:layout_constraintStart_toEndOf="@+id/rl_trace_panel"
+            app:layout_constraintTop_toTopOf="@+id/rl_trace_panel">
+
+            <TextView
+                android:id="@+id/tv_all_network"
+                style="@style/common_text_title"
+                android:text="@string/settings_item_all_network" />
+
+            <TextView
+                style="@style/common_text_content"
+                android:layout_below="@+id/tv_all_network"
+                android:layout_marginTop="8dp"
+                android:text="@string/settings_item_all_network_tips" />
+
+            <Switch
+                android:id="@+id/sw_all_network"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:thumb="@drawable/common_switch_thumb_selector"
+                android:track="@drawable/common_switch_track_selector"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_tts_log"
+            android:layout_width="600dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:background="@drawable/shape_settings_item"
+            android:padding="16dp"
+            app:layout_constraintStart_toEndOf="@+id/rl_all_network"
+            app:layout_constraintTop_toTopOf="@+id/rl_all_network">
+
+            <TextView
+                android:id="@+id/tv_tts_log"
+                style="@style/common_text_title"
+                android:text="@string/settings_item_tts_log" />
+
+            <TextView
+                style="@style/common_text_content"
+                android:layout_below="@+id/tv_tts_log"
+                android:layout_marginTop="8dp"
+                android:text="@string/settings_item_tts_log_tips" />
+
+            <Switch
+                android:id="@+id/sw_tts_log"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:thumb="@drawable/common_switch_thumb_selector"
+                android:track="@drawable/common_switch_track_selector"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_va_audio"
+            android:layout_width="600dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/shape_settings_item"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rl_trace_panel">
+
+            <TextView
+                android:id="@+id/tv_va_audio"
+                style="@style/common_text_title"
+                android:text="@string/settings_item_va_audio" />
+
+            <TextView
+                style="@style/common_text_content"
+                android:layout_below="@+id/tv_va_audio"
+                android:layout_marginTop="8dp"
+                android:text="@string/settings_item_va_audio_tips" />
+
+            <Switch
+                android:id="@+id/sw_va_audio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:thumb="@drawable/common_switch_thumb_selector"
+                android:track="@drawable/common_switch_track_selector"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_fail_wakeup"
+            android:layout_width="600dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/shape_settings_item"
+            android:padding="16dp"
+            app:layout_constraintStart_toEndOf="@+id/rl_va_audio"
+            app:layout_constraintTop_toBottomOf="@+id/rl_all_network">
+
+            <TextView
+                android:id="@+id/tv_fail_wakeup"
+                style="@style/common_text_title"
+                android:text="@string/settings_item_fail_wakeup" />
+
+            <TextView
+                style="@style/common_text_content"
+                android:layout_below="@+id/tv_fail_wakeup"
+                android:layout_marginTop="8dp"
+                android:text="@string/settings_item_fail_wakeup_tips" />
+
+            <Switch
+                android:id="@+id/sw_fail_wakeup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:thumb="@drawable/common_switch_thumb_selector"
+                android:track="@drawable/common_switch_track_selector"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_pre_env"
+            android:layout_width="600dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:background="@drawable/shape_settings_item"
+            android:padding="16dp"
+            app:layout_constraintStart_toEndOf="@+id/rl_fail_wakeup"
+            app:layout_constraintTop_toTopOf="@+id/rl_fail_wakeup">
+
+            <TextView
+                android:id="@+id/tv_pre_env"
+                style="@style/common_text_title"
+                android:text="@string/settings_item_pre_env" />
+
+            <TextView
+                style="@style/common_text_content"
+                android:layout_below="@+id/tv_pre_env"
+                android:layout_marginTop="8dp"
+                android:text="@string/settings_item_pre_env_tips" />
+
+            <Switch
+                android:id="@+id/sw_pre_env"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:thumb="@drawable/common_switch_thumb_selector"
+                android:track="@drawable/common_switch_track_selector"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

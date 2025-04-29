@@ -1,0 +1,17 @@
+com.voyah.ai.voice.agent.flowchart.FlowChartAgent
+com.voyah.ai.voice.agent.genExitAgent
+com.voyah.ai.voice.agent.DouDiAgent
+com.voyah.ai.voice.agent.phone.PhoneOpAgent
+com.voyah.ai.voice.agent.phone.PhoneComOpAgent
+com.voyah.ai.voice.agent.phone.PhoneUiSwitchAgent
+com.voyah.ai.voice.agent.phone.PhoneNameOpAgent
+com.voyah.ai.voice.agent.phone.PhoneNumberOpAgent
+com.voyah.ai.voice.agent.phone.PhoneReDialAgent
+com.voyah.ai.voice.agent.phone.PhoneBackDialAgent
+com.voyah.ai.voice.agent.phone.PhoneKeyWordSeAgent
+com.voyah.ai.voice.agent.phone.PhoneAnswerAgent
+com.voyah.ai.voice.agent.phone.PhoneChooseAgent
+com.voyah.ai.voice.agent.phone.PhoneRejectAgent
+com.voyah.ai.voice.agent.phone.PhoneSyncAgent
+com.voyah.ai.voice.agent.phone.PhoneIndexSeAgent
+com.voyah.ai.voice.agent.VoiceInteractiveAgent

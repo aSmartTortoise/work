@@ -1,0 +1,152 @@
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
+import java.nio.file.Paths
+import java.nio.file.Path
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+ext {
+    apkPrefix = 'VoyahVoiceService'
+    formattedDate = new Date().format("yyyyMMdd")
+    formattedDate2 = new Date().format("yyyyMMddHHmm")
+}
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName "N-" + project.carmodule + "-" + formattedDate + "-" + rootProject.ext.android.versionName + "-" + getCommitHash()
+        versionNameSuffix ""
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        ndk {
+            abiFilters 'arm64-v8a'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/io.netty.versions.properties'
+        exclude 'META-INF/versions/9/OSGI-INF/MANIFEST.MF'
+    }
+
+    signingConfigs {
+        voyah8295 {
+            storeFile file("../keystore/8295_keystore/aosp.keystore")
+            storePassword "android"
+            keyAlias "platform"
+            keyPassword "android"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "Boolean", "CustomDebug", "false"
+            signingConfig signingConfigs.voyah8295
+        }
+        debug {
+            testCoverageEnabled false
+            buildConfigField "Boolean", "CustomDebug", "true"
+            signingConfig signingConfigs.voyah8295
+
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        ignoreWarnings true
+    }
+
+    buildFeatures {
+        viewBinding true
+        dataBinding = true
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "${apkPrefix}-" + "N-" + project.carmodule + "-" + formattedDate2 + "-" + rootProject.ext.android.versionName + "-" + getCommitHash() +
+                    ".apk"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packagingOptions {
+        exclude 'META-INF/INDEX.LIST'
+    }
+}
+
+preBuild.doFirst {
+    println "prebuild start"
+    File folderModule = file("..//voice//src//main//jniLibs//" + project.carmodule)
+    if (folderModule.exists() && folderModule.isDirectory()) {
+        File folderV8a = file("..//voice//src//main//jniLibs//arm64-v8a")
+        if (folderV8a.exists() && folderV8a.isDirectory()) {
+            println("folderV8a exit")
+            File[] files = folderV8a.listFiles()
+            if (files != null && files.size() > 0) {
+                for (File curFile : files) {
+                    curFile.delete()
+                    println("delete:" + curFile.getAbsoluteFile())
+                }
+            }
+        } else {
+            println("folderV8a not exit")
+            folderV8a.mkdirs()
+        }
+        File[] needCopyFiles = folderModule.listFiles()
+        if (needCopyFiles != null && needCopyFiles.size() > 0) {
+            for (File curFile : needCopyFiles) {
+                Path path = Files.copy(Paths.get(curFile.getAbsolutePath()), Paths.get(folderV8a.getAbsolutePath() + File.separator + curFile.getName()), StandardCopyOption.REPLACE_EXISTING)
+                println("copy path:" + path)
+            }
+        }
+    }
+    File manifestFile = file("..//app//src//main//AndroidManifest-" + project.carmodule + ".xml")
+    if (manifestFile.exists()) {
+        File oldManifestFile = file("..//app//src//main//AndroidManifest.xml")
+        Path path = Files.copy(Paths.get(manifestFile.getAbsolutePath()), Paths.get(oldManifestFile.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING)
+        println("copy path2:" + path)
+    }
+}
+
+def getCommitHash() {
+    try {
+        return 'git rev-parse --short HEAD'.execute(
+                [], project.rootDir
+        ).text.trim()
+    } catch (e) {
+        return 'unknown'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    implementation project(path: ':common')
+    implementation project(path: ':voice')
+    implementation project(path: ':autoflow')
+    implementation project(path: ':engineer')
+    implementation rootProject.ext.dependencies.appcompat
+    implementation rootProject.ext.dependencies.material
+    implementation rootProject.ext.dependencies.constraintlayout
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation rootProject.ext.dependencies.junit
+    implementation rootProject.ext.dependencies.testJunit
+    implementation project(path: ':filter-annotation')
+    implementation project(path: ':common-device-lib')
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.3.0')
+    compileOnly('org.slf4j:slf4j-api:1.7.36')
+}

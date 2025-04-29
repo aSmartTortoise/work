@@ -1,0 +1,23 @@
+rootProject.name = "voice"
+include ':app'
+include ':common'
+include ':voice'
+include ':autoflow'
+include ':filter-annotation'
+include ':filter-process'
+include ':ipcsdk:sdk', ':ipcsdk:contract', ':ipcsdk:test'
+include ':engineer'
+include ':base-car'
+if (hasProperty('carmodule') && carmodule == 'h56d') {
+    println 'carmodule is: ' + carmodule
+    include ':h56d'
+} else if (hasProperty('carmodule') && (carmodule == 'h37a' || carmodule == 'h37b')) {
+    println 'carmodule is: ' + carmodule
+    include ':h37a'
+} else {
+    include ':h56c'
+}
+include ':common-device-lib'
+if (buildClientAar.toBoolean()) {
+    include ':virtual-car'
+}

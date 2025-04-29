@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.voyah.ai.device">
+
+    <!--雷石KTV-->
+    <queries>
+        <package android:name="com.thunder.carplay" />
+    </queries>
+
+    <!--哨兵模式-->
+    <queries>
+        <package android:name="com.arcsoft.sentryService" />
+    </queries>
+    <uses-permission android:name="com.arcsoft.SentryService"/>
+
+    <!--for bili-->
+    <uses-permission android:name="android.car.permission.CAR_CONTROL_AUDIO_VOLUME" />
+    <uses-permission android:name="android.car.permission.MEDIA_CONTENT_CONTROL" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application>
+        <service
+            android:name="com.voyah.ai.basecar.media.service.MediaDeviceService"
+            android:exported="true"
+            android:label="VoiceDeviceService"
+            android:singleUser="true">
+            <intent-filter>
+                <action android:name="com.voyah.ai.voice.ACTION_BIND_SERVICE" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="com.voyah.ai.basecar.media.receiver.BiliBroadcastReceiver"
+            android:exported="true"
+            android:singleUser="true">
+            <intent-filter>
+                <action android:name="bili.mediaSessionCallback.resultCode" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

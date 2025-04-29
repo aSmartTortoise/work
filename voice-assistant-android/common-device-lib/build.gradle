@@ -1,0 +1,97 @@
+plugins {
+    id 'com.android.library'
+    id 'com.kezong.fat-aar'
+    id 'maven-publish'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.example.commonDeviceLib'
+    compileSdk rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    if (project.buildClientAar.toBoolean()) {
+        if (project.carmodule == 'h56d') {
+            api('com.voyah.ai.voice.sdk:va-sdk:2.1.0-20250428.091202-3:jar-with-dependencies') {
+                exclude group: 'com.google.guava', module: 'guava'
+            }
+        } else {
+            api('com.voyah.ai.voice.sdk:va-sdk:2.0.3-20250428.092927-6:jar-with-dependencies') {
+                exclude group: 'com.google.guava', module: 'guava'
+            }
+        }
+        api rootProject.ext.dependencies.voiceInterface
+        embed project(path: ':virtual-car')
+    } else {
+        api project(path: ':voice')
+    }
+}
+
+afterEvaluate {
+    if (project.buildClientAar.toBoolean()) {
+        publishing {
+            publications {
+                release(MavenPublication) {
+                    // 指定组名、版本和 artifactId
+                    groupId = 'com.voyah.ai.voice'  // 例如: com.github.username
+                    artifactId = 'voice-logic'   // 模块名称
+                    version = '1.0.0-SNAPSHOT'   // 版本号
+
+                    // 打包 AAR 和源码（可选）
+                    artifact bundleReleaseAar
+                    artifact sourcesJar // 需要定义 sourcesJar 任务（见下文）
+
+                    // 自动生成 POM 文件并处理依赖传递
+                    pom.withXml {
+                        def dependenciesNode = asNode().appendNode('dependencies')
+                        configurations.implementation.allDependencies.each { dep ->
+                            if (dep.version != "unspecified") { // 忽略未指定版本的依赖
+                                def dependencyNode = dependenciesNode.appendNode('dependency')
+                                dependencyNode.appendNode('groupId', dep.group)
+                                dependencyNode.appendNode('artifactId', dep.name)
+                                dependencyNode.appendNode('version', dep.version)
+                            }
+                        }
+                    }
+                }
+            }
+            // 配置 Maven 仓库地址
+            repositories {
+                maven {
+                    url 'http://nexus.voyah.cn/repository/maven-snapshots/' // 仓库地址
+                    allowInsecureProtocol true
+                    credentials {
+                        username "developer"
+                        password "voyah@1qwz"
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 生成源码 Jar 任务（可选）
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}

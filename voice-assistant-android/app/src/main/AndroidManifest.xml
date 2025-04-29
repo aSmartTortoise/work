@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.voyah.ai.voice"
+    android:sharedUserId="android.uid.system" >
+
+    <!--android 9.0上使用前台服务，需要添加权限-->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.car.permission.CAR_CONTROL_AUDIO_VOLUME" />
+<!--    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />-->
+    <!-- 空调香氛应用界面需要加的权限   -->
+    <uses-permission android:name="com.vovah.cockpit.airconditioner.service.AcVoiceService" />
+    <!-- 调用CarService需要的权限   -->
+    <uses-permission android:name="mega.car.permission.CLIMATE" />
+    <!--壁纸桌面权限  上述权限的protectionLevel=signatureOrSystem，请注意自身应用的签名和系统属性配置-->
+    <uses-permission android:name="com.voyah.cockpit.launcher.CONTROL_WALLPAPER" />
+
+    <!-- contentProvider需要添加的权限   -->
+    <uses-permission android:name="com.example.myapp.permission.ACCESS_MY_DATA" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.MANAGE_USERS"
+        tools:ignore="ProtectedPermissions" />
+    <!--  允许应用程序查询又有已安装的应用程序包  -->
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+
+    <!-- 需要用的外部ContentProvider   -->
+
+    <queries>
+        <provider android:authorities="com.voyah.virtual.device.provider" />
+    </queries>
+
+
+    <application
+        android:name=".AppContext"
+        android:allowBackup="true"
+        android:extractNativeLibs="true"
+        android:icon="@drawable/icon_voice_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:supportsRtl="true"
+        android:persistent="true"
+        android:theme="@style/Theme.Voice">
+        <activity android:name="com.voyah.ai.voice.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.voyah.ai.voice.VRService"
+            android:enabled="true"
+            android:exported="true"
+            android:singleUser="true">
+            <intent-filter android:priority="1000">
+                <action android:name="com.voyah.vcos.voice.VRService" />
+            </intent-filter>
+        </service>
+
+<!--        <receiver-->
+<!--            android:name=".receiver.voice.VRBootReceiver"-->
+<!--            android:exported="true"-->
+<!--            android:singleUser="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.BOOT_COMPLETED" />-->
+<!--            </intent-filter>-->
+<!--        </receiver>-->
+
+        <receiver
+            android:name=".receiver.voice.AutoTestBroadcastReceiver"
+            android:exported="true"
+            android:singleUser="true">
+            <intent-filter>
+                <action android:name="com.voyah.ai.autotest.query" />
+                <action android:name="com.voyah.ai.autotest.awake" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".receiver.voice.FunctionTestBroadcastReceiver"
+            android:exported="true"
+            android:singleUser="true">
+            <intent-filter>
+                <action android:name="com.voyah.ai.test.fuction" />
+                <action android:name="com.voyah.ai.ui.query" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".receiver.voice.TencentBroadcastReceiver"
+            android:exported="true"
+            android:singleUser="true">
+            <intent-filter>
+                <action android:name="com.intent.action.TENCENT_MEDIA_KEY" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".receiver.voice.TiktokBroadcastReceiver"
+            android:exported="true"
+            android:singleUser="true">
+            <intent-filter>
+                <action android:name="com.bytedance.byteautoservice.action.play.status" />
+            </intent-filter>
+        </receiver>
+
+<!--        <receiver-->
+<!--            android:name=".receiver.voice.LeiKtvReceiver"-->
+<!--            android:exported="true"-->
+<!--            android:singleUser="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.thunder.carplay.broadcast.NOTIFY_FEATURE" />-->
+<!--            </intent-filter>-->
+<!--        </receiver>-->
+
+        <service
+            android:name=".remote.RemoteBindService"
+            android:enabled="true"
+            android:exported="true"
+            android:singleUser="true">
+            <intent-filter android:priority="1000">
+                <action android:name="com.voyah.ai.RemoteBindService" />
+            </intent-filter>
+        </service>
+
+        <provider
+            android:name=".provider.ExportProvider"
+            android:authorities="com.voyah.ai.voice.export"
+            android:exported="true"
+            android:singleUser="true" />
+    </application>
+</manifest>

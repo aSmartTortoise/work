@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <layer-list>
+            <item android:width="58px" android:height="58px"
+                android:drawable="@drawable/thumb_common_on" />
+        </layer-list>
+    </item>
+    <item>
+        <layer-list>
+            <item android:width="58px" android:height="58px"
+                android:drawable="@drawable/thumb_common_off" />
+        </layer-list>
+    </item>
+</selector>

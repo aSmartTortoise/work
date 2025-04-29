@@ -1,0 +1,55 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.voyah.ai.h37'
+    compileSdk rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+        minSdk rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        ignoreWarnings true
+    }
+}
+
+dependencies {
+    api project(path: ':base-car')
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api(name: 'car-lib-H37A-H37B-H53B-debug-20250411', ext: 'aar')
+    api('com.blankj:utilcodex:1.31.0') {
+        exclude group: 'com.google.code.gson', module: 'gson'
+        exclude group: 'org.jetbrains', module: 'annotations'
+    }
+    // 岚图音乐1.0
+    api(name: 'lib-ipcsdk-release', ext: 'aar')
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.13'
+    api "com.alibaba:fastjson:1.2.83"
+    api project(path: ':common')
+    api project(path: ':voice')
+    //使用注解处理器。
+    implementation project(path: ':filter-annotation')
+    implementation rootProject.ext.dependencies.appcompat
+    implementation rootProject.ext.dependencies.material
+    implementation rootProject.ext.dependencies.junit
+    implementation rootProject.ext.dependencies.constraintlayout
+}

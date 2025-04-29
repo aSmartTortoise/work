@@ -1,0 +1,162 @@
+plugins {
+    id 'com.android.library'
+    id 'com.kezong.fat-aar'
+    id 'maven-publish'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        ndk {
+            abiFilters 'arm64-v8a', 'armeabi-v7a'
+        }
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "Boolean", "VCar_enabled", project.buildClientAar
+        }
+        debug {
+            buildConfigField "Boolean", "VCar_enabled", project.buildClientAar
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        ignoreWarnings true
+    }
+
+    afterEvaluate {
+        if (project.buildClientAar.toBoolean()) {
+            //fat-aar 会在bundleReleaseAar任务后执行reBundleAarRelease
+            tasks.named("reBundleAarRelease").configure {
+                doLast {
+                    // 解压 AAR，删除 .so 文件，重新打包
+                    def aarName = archiveFileName.get()
+                    def aarPath = layout.buildDirectory.file("outputs/aar/$aarName").get().asFile
+
+                    println("12345667 aarpath" + aarPath)
+
+                    def reBundle = layout.buildDirectory.file("outputs/aar_rebundle/release").get().asFile
+
+                    // 删除 jni 目录
+                    delete new File(reBundle, "jni")
+                    delete new File(reBundle, "arm64-v8a")
+                    delete new File(reBundle, "h37a")
+                    delete new File(reBundle, "h56c")
+
+                    // 重新打包 AAR
+                    delete aarPath
+                    ant.zip(baseDir: reBundle, destFile: aarPath)
+                }
+            }
+        }
+    }
+
+}
+
+configurations.all {
+    resolutionStrategy {
+        cacheDynamicVersionsFor 0, 'seconds' // 不缓存动态版本（包括 SNAPSHOT）
+        cacheChangingModulesFor 0, 'seconds' // 不缓存正在变化的模块
+    }
+}
+
+
+dependencies {
+//    api('com.voyah.ai.voice.sdk:va-sdk:1.4.0:jar-with-dependencies') {
+//        exclude group: 'com.google.guava', module: 'guava'
+//    }
+    //快照
+    if (project.carmodule == 'h56d') {
+        api('com.voyah.ai.voice.sdk:va-sdk:2.1.0-20250428.091202-3:jar-with-dependencies') {
+            exclude group: 'com.google.guava', module: 'guava'
+        }
+    } else {
+        api('com.voyah.ai.voice.sdk:va-sdk:2.0.3-20250428.092927-6:jar-with-dependencies') {
+            exclude group: 'com.google.guava', module: 'guava'
+        }
+    }
+    implementation(group: 'com.google.guava', name: 'guava', version: '29.0-android')
+    implementation rootProject.ext.dependencies.appcompat
+
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.13'
+
+    if (project.buildClientAar.toBoolean()) {
+        embed project(path: ':common')
+        embed(name: 'VoiceSDK-1.5-20250429', ext: 'aar')
+    } else {
+        implementation project(path: ':common')
+        api(name: 'VoiceSDK-1.5-20250429', ext: 'aar')
+    }
+
+
+}
+
+
+afterEvaluate {
+    if (project.buildClientAar.toBoolean()) {
+        publishing {
+            publications {
+                release(MavenPublication) {
+                    // 指定组名、版本和 artifactId
+                    groupId = 'com.voyah.ai.voice'
+                    artifactId = 'voice-interface'
+                    version = '1.0.0-SNAPSHOT'
+
+                    // 打包 AAR 和源码（可选）
+                    artifact bundleReleaseAar
+                    artifact sourcesJar // 需要定义 sourcesJar 任务
+
+                    // 自动生成 POM 文件并处理依赖传递
+                    pom.withXml {
+                        def dependenciesNode = asNode().appendNode('dependencies')
+                        configurations.implementation.allDependencies.each { dep ->
+                            if (dep.version != "unspecified") { // 忽略未指定版本的依赖
+                                def dependencyNode = dependenciesNode.appendNode('dependency')
+                                dependencyNode.appendNode('groupId', dep.group)
+                                dependencyNode.appendNode('artifactId', dep.name)
+                                dependencyNode.appendNode('version', dep.version)
+                            }
+                        }
+                    }
+                }
+            }
+            // 配置 Maven 仓库地址
+            repositories {
+                maven {
+                    url 'http://nexus.voyah.cn/repository/maven-snapshots/' // 仓库地址
+                    allowInsecureProtocol true
+                    credentials {
+                        username "developer"
+                        password "voyah@1qwz"
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 生成源码 Jar 任务（可选）
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
