@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:ignore="MissingDefaultResource">
+<ImageButton
+    android:id="@+id/btn_back"
+    android:background="@drawable/btn_back"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:scaleType="center"
+    android:tag="ViewCmd:返回"
+    android:src="@drawable/icon_back"
+    android:stateListAnimator="@animator/back_pressed"
+    tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>

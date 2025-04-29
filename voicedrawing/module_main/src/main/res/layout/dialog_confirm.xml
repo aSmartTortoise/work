@@ -1,0 +1,60 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="600dp"
+    android:layout_height="360dp"
+    android:background="@drawable/bg_confirm">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="600dp"
+        android:layout_height="360dp"
+        tools:ignore="MissingConstraints">
+    <TextView
+        android:id="@+id/text_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="91dp"
+        android:lineSpacingExtra="8.4sp"
+        android:text="共计删除xxx张图片，删除后不可恢复"
+        android:textColor="@color/his_confirm_desc_text_color"
+        android:textFontWeight="400"
+        android:textSize="28sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="236dp"
+        android:layout_height="96dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginRight="48dp"
+        android:background="@drawable/btn_bg2"
+        android:scaleType="center"
+        android:stateListAnimator="@animator/back_pressed"
+        android:text="取消"
+        android:textColor="@color/his_date_text_color"
+        android:textSize="32sp"
+        app:backgroundTint="@null"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="236dp"
+        android:layout_height="96dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/btn_bg2"
+        android:scaleType="center"
+        android:stateListAnimator="@animator/back_pressed"
+        android:text="删除图片"
+        android:textColor="@color/his_confirm_delete_text_color"
+        android:textSize="32sp"
+        app:backgroundTint="@null"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

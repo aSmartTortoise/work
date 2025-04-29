@@ -1,0 +1,50 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+def android_config = rootProject.ext.android
+def depLibs = rootProject.ext.depsLibs
+
+android {
+    namespace 'com.voyah.vcos'
+    compileSdk android_config.compileSdk
+
+    defaultConfig {
+        minSdk android_config.minSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    compileOnly depLibs.coreKtx
+    compileOnly depLibs.appcompat
+    compileOnly depLibs.material
+    testCompileOnly depLibs.junit
+    androidTestCompileOnly depLibs.extJunit
+    androidTestCompileOnly depLibs.espressoCore
+
+    api project(path: ':lib_common_voyah')
+
+
+
+
+
+
+}

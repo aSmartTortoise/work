@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-sdk tools:overrideLibrary="com.voyah.ai.sdk" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
+    <application>
+        <activity
+            android:name=".ui.SplashActivity"
+            android:exported="true">
+
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:configChanges="mcc|mnc|locale|layoutDirection|orientation|screenSize|screenLayout|smallestScreenSize|density|fontScale|uiMode|touchscreen|navigation|keyboardHidden|keyboard"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.ViewActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:configChanges="uiMode"/>
+        <activity
+            android:name=".ui.DrawingInfoActivity"
+            android:configChanges="mcc|mnc|locale|layoutDirection|orientation|screenSize|screenLayout|smallestScreenSize|density|fontScale|uiMode|touchscreen|navigation|keyboardHidden|keyboard"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:resizeableActivity="true" />
+
+        <service
+            android:name=".service.DrawingAPIService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.voyah.voice.drawing.DRAWING_SERVICE" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name=".receiver.DrawingBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.voyah.voice.drawing.test" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

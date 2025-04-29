@@ -1,0 +1,64 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+
+def android_config = rootProject.ext.android
+def depLibs = rootProject.ext.depsLibs
+
+android {
+    namespace 'com.voyah.common'
+    compileSdk android_config.compileSdk
+
+    defaultConfig {
+        minSdk android_config.minSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+}
+
+dependencies {
+
+    compileOnly depLibs.coreKtx
+    compileOnly depLibs.appcompat
+    compileOnly depLibs.material
+    testCompileOnly depLibs.junit
+    androidTestCompileOnly depLibs.extJunit
+    androidTestCompileOnly depLibs.espressoCore
+
+    kapt depLibs.arouterCompiler
+    annotationProcessor 'com.github.hufeiyang.Android-AppLifecycleMgr:applifecycle-compiler:1.0.4'
+
+    api project(path: ':lib_framework')
+
+    api depLibs.glide
+    kapt depLibs.glideCompiler
+
+}

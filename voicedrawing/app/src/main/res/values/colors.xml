@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="blue">#0082D7</color>
+    <color name="canvas_red_color">#ca2374</color>
+    <color name="canvas_orange_color">#fe9191</color>
+    <color name="pink_water">#ff69b4</color>
+    <color name="green_container">#BEE0C0</color>
+
+    <color name="black">#ff000000</color>
+    <color name="black_ff1E1F22">#ff1E1F22</color>
+    <color name="black_ff151617">#ff151617</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_ccFFFFFF">#ccFFFFFF</color>
+    <color name="white_99FFFFFF">#99FFFFFF</color>
+    <color name="white_e6FFFFFF">#e6FFFFFF</color>
+    <color name="gray_ofFFFFFF">#0fFFFFFF</color>
+
+
+    <color name="window_bg">#ffE3E9F7</color>
+</resources>

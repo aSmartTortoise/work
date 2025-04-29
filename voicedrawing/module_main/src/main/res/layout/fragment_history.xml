@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="1104dp"
+    android:layout_height="866dp"
+    android:background="@drawable/bg_his"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="1104dp"
+        android:layout_height="866dp"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+
+        <ImageView
+            android:id="@+id/img_empty"
+            android:layout_width="400dp"
+            android:layout_height="466dp"
+            android:layout_marginTop="261.5dp"
+            android:src="@drawable/history_empty"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="112dp"
+            android:layout_marginTop="24dp">
+
+            <ImageButton
+                android:id="@+id/btn_close"
+                android:layout_width="44.456dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="44.46dp"
+                android:background="@android:color/transparent"
+                android:scaleType="center"
+                android:src="@drawable/btn_close2"
+                android:stateListAnimator="@animator/btn_style1"
+                android:tag="ViewCmd:关闭"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/attr_desc_text"
+                android:lineSpacingExtra="9.6sp"
+                android:text="绘画历史"
+                android:textColor="@color/his_title_color"
+                android:textFontWeight="400"
+                android:textSize="32sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btn_edit"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginRight="46dp"
+                android:background="@drawable/btn_bg2"
+                android:scaleType="center"
+                android:src="@drawable/btn_edit"
+                android:stateListAnimator="@animator/btn_style1"
+                android:tag="ViewCmd:编辑"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="116dp"
+                android:layout_height="80dp"
+                android:layout_marginRight="48dp"
+                android:background="@drawable/btn_bg2"
+                android:scaleType="center"
+                android:stateListAnimator="@animator/back_pressed"
+                android:text="取消"
+                android:textColor="@color/his_title_color"
+                android:textSize="28sp"
+                app:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/btn_select_all"
+                android:layout_width="116dp"
+                android:layout_height="80dp"
+                android:layout_marginRight="188dp"
+                android:background="@drawable/btn_bg2"
+                android:stateListAnimator="@animator/back_pressed"
+                android:text="全选"
+                android:textColor="@color/his_title_color"
+                android:textSize="28sp"
+                app:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/btn_delete"
+                android:layout_width="116dp"
+                android:layout_height="80dp"
+                android:layout_marginRight="328dp"
+                android:background="@drawable/btn_bg2"
+                android:scaleType="center"
+                android:src="@drawable/delete"
+                android:stateListAnimator="@animator/back_pressed"
+                android:tag="ViewCmd:删除"
+                app:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycle_his"
+            android:layout_width="964dp"
+            android:layout_height="636dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="173dp"
+            android:fadeScrollbars="false"
+            android:fastScrollEnabled="true"
+            android:scrollbarThumbVertical="@drawable/scroll_bar"
+            android:overScrollMode="never"
+            android:scrollbars="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="Gesture:V+P"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

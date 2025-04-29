@@ -1,0 +1,108 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven {
+            allowInsecureProtocol true
+            url = 'http://10.223.105.162:8084/repository/voyah-snapshots/'
+            credentials {
+                username "nexus_dn"
+                password "nexus123"
+            }
+        }
+
+        maven {
+            allowInsecureProtocol true
+            url = 'http://10.223.105.162:8084/repository/voyah-release/'
+            credentials {
+                username "nexus_dn"
+                password "nexus123"
+            }
+        }
+
+
+        maven {
+            allowInsecureProtocol true
+            url = 'http://nexus.voyah.cn/repository/maven-snapshots/'
+            credentials {
+                username "developer"
+                password "voyah@1qwz"
+            }
+        }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven {
+            allowInsecureProtocol true
+            url = 'http://10.223.105.162:8084/repository/voyah-snapshots/'
+            credentials {
+                username "nexus_dn"
+                password "nexus123"
+            }
+        }
+
+        maven {
+            allowInsecureProtocol true
+            url = 'http://10.223.105.162:8084/repository/voyah-release/'
+            credentials {
+                username "nexus_dn"
+                password "nexus123"
+            }
+        }
+
+        maven {
+            allowInsecureProtocol true
+            url = 'http://nexus.voyah.cn/repository/maven-snapshots/'
+            credentials {
+                username "developer"
+                password "voyah@1qwz"
+            }
+        }
+
+
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+
+        flatDir {
+            dirs './module_main/libs'
+        }
+        flatDir {
+            dirs './lib_common/libs'
+        }
+        flatDir {
+            dirs './lib_framework/libs'
+        }
+        flatDir {
+            dirs './lib_common_voyah/libs'
+        }
+        flatDir {
+            dirs './device/lib_base_device/libs'
+        }
+    }
+}
+rootProject.name = "voicedrawing"
+include ':app'
+include ':lib_framework'
+include ':module_main'
+include ':lib_common'
+include ':lib_network'
+include ':lib_markdown_parser'
+include ':lib_voice_drawing'
+include ':easyfloat'
+include ':lib_common_voyah'
+include ':device:lib_base_device'
+
+if (deviceType == 'H56C') {
+    include ':device:lib_h56c'
+} else if (deviceType == "H37A") {
+    include ':device:lib_h37a'
+} else if (deviceType == "H37B") {
+    include ':device:lib_h37b'
+} else {
+    include ':device:lib_h56c'
+}

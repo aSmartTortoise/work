@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="framework_default_loading">加载中...</string>
+    <string name="framework_base_app_exit_one_more_press">再按一次退出程序</string>
+</resources>
