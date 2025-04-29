@@ -1,0 +1,4 @@
+rootProject.name = "AIWindow"
+include ':app'
+include ':extras:sdk', ':extras:plugin'
+include ':extras:contract'

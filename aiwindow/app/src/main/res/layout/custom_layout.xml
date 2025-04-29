@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="测试文本"
+        android:textSize="32sp" />
+
+    <Button
+        android:id="@+id/bt_jump"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="点击弹TOAST" />
+
+    <Button
+        android:id="@+id/bt_jump2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bt_jump"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="点击弹Dialog" />
+</RelativeLayout>

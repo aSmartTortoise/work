@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="message">
+        <attr name="msg_text" format="string" />
+        <attr name="msg_text_size" format="dimension" />
+        <attr name="msg_text_color" format="color" />
+        <attr name="msg_bg_color" format="color|string" />
+        <attr name="msg_user_send" format="boolean" />
+        <attr name="msg_image_height" format="dimension" />
+        <attr name="msg_image_width" format="dimension" />
+        <attr name="msg_margin" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="ButtonCircleProgressBar">
+        <!--无进度时的颜色-->
+        <attr name="progress_unreached_color" format="color" />
+        <!--进度颜色-->
+        <attr name="progress_reached_color" format="color" />
+        <!--进度条的高-->
+        <attr name="progress_reached_bar_height" format="dimension" />
+        <!--无进度时的边框高-->
+        <attr name="progress_unreached_bar_height" format="dimension" />
+        <!--圆的半径-->
+        <attr name="radius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="ClearEditText">
+        <attr name="hint" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="VpaStyle">
+        <attr name="asr" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="MarqueeTextView">
+        <attr name="scroll_interval" format="integer" />
+        <attr name="scroll_first_delay" format="integer" />
+        <attr name="scroll_mode">
+            <enum name="mode_forever" value="100" />
+            <enum name="mode_once" value="101" />
+        </attr>
+    </declare-styleable>
+</resources>

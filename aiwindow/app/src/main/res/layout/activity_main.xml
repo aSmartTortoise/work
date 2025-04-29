@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <Button
+            android:id="@+id/btn_show_plugin_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="100dp"
+            android:text="显示插件"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_dismiss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="隐藏插件"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="@+id/btn_show_plugin_view"
+            app:layout_constraintTop_toBottomOf="@+id/btn_show_plugin_view" />
+
+
+        <Button
+            android:id="@+id/btn_wakeup_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="开启交互-主驾"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="@+id/btn_dismiss"
+            app:layout_constraintTop_toBottomOf="@+id/btn_dismiss" />
+
+        <Button
+            android:id="@+id/btn_wakeup_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="开启交互-副驾"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="@+id/btn_wakeup_0"
+            app:layout_constraintTop_toBottomOf="@+id/btn_wakeup_0" />
+
+        <Button
+            android:id="@+id/btn_wakeup_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="开启交互-后左"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="@+id/btn_wakeup_1"
+            app:layout_constraintTop_toBottomOf="@+id/btn_wakeup_1" />
+
+        <Button
+            android:id="@+id/btn_wakeup_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="开启交互-后右"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="@+id/btn_wakeup_2"
+            app:layout_constraintTop_toBottomOf="@+id/btn_wakeup_2" />
+
+        <Button
+            android:id="@+id/btn_show_asr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="显示ASR-聆听"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="@+id/btn_wakeup_3"
+            app:layout_constraintTop_toBottomOf="@+id/btn_wakeup_3" />
+
+        <Button
+            android:id="@+id/btn_update_asr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="显示ASR-用户流式识别"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="@+id/btn_show_asr"
+            app:layout_constraintTop_toBottomOf="@+id/btn_show_asr" />
+
+        <Button
+            android:id="@+id/btn_update_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="VPA切换到播报态"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="@+id/btn_update_asr"
+            app:layout_constraintTop_toBottomOf="@+id/btn_update_asr" />
+
+        <Button
+            android:id="@+id/btn_show_skill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="显示技能卡片"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="@+id/btn_update_state"
+            app:layout_constraintTop_toBottomOf="@+id/btn_update_state" />
+
+        <Button
+            android:id="@+id/btn_asleep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="退出交互"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="@+id/btn_show_skill"
+            app:layout_constraintTop_toBottomOf="@+id/btn_show_skill" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
