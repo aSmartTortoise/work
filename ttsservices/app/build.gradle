@@ -1,0 +1,96 @@
+plugins {
+    id 'com.android.application'
+}
+
+ext {
+    apkPrefix = 'VoyahTtsService'
+    formattedDate = new Date().format("yyyyMMdd")
+}
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        voyah8295 {
+            storeFile file("../keystore/8295_keystore/aosp.keystore")
+            storePassword "android"
+            keyAlias "platform"
+            keyPassword "android"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "Boolean", "CustomDebug", "false"
+            signingConfig signingConfigs.voyah8295
+        }
+        debug {
+            testCoverageEnabled false
+            buildConfigField "Boolean", "CustomDebug", "true"
+            signingConfig signingConfigs.voyah8295
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "${apkPrefix}-" + "${android.defaultConfig.versionName}" + "-${formattedDate}" +
+                    ".apk"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    implementation project(path: ':contract')
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+//    implementation group: 'com.microsoft.cognitiveservices.speech', name: 'client-sdk-embedded', version: '1.34.0'
+    implementation group: 'com.voyah.microsoft.speech', name: 'client-sdk-embedded', version: '1.37.0', ext: 'aar'
+    implementation 'com.blankj:utilcodex:1.31.0';
+
+    //本地持久化存储
+//    implementation('com.tencent:mmkv:1.0.10')
+
+    // 添加Gson库依赖
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    implementation 'org.json:json:20210307'
+
+    //埋点需要的库
+//    api(name: 'push-lib-debug', ext: 'aar')
+//    api('libs/push-lib-debug.aar')
+    implementation "com.google.protobuf:protobuf-java:3.7.0"
+    implementation 'com.tencent:mmkv:1.3.1'
+
+}

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.voyah.vcos.ttsservices.MainActivity">
+
+    <Button
+        android:id="@+id/bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="开始合成-P2-长文本"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/bt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:text="开始合成-P1-长文本"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/bt3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt2"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:text="开始合成-P2-短文本"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/bt4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt3"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:text="开始合成-不在白名单中的三方"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/bt5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt4"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:text="开始合成-P1-短文本"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/bt6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt4"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:text="流式合成本地测试"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/bt7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt6"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:text="普通播报-打断流式"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/bt8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt7"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:text="循环发起P2请求"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/copySyc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt8"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:text="声音复刻-普通合成" />
+
+</RelativeLayout>

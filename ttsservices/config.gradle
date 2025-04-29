@@ -1,0 +1,35 @@
+ext {
+    ext {
+        versionCodeDate = new Date().format("YYYYMMdd", TimeZone.getTimeZone("GMT+08:00"));
+    }
+    android = [
+            compileSdkVersion: 30,
+            buildToolsVersion: "30.0.2",
+            applicationId    : "com.voyah.vcos.ttsservices",
+            minSdkVersion    : 30,
+            targetSdkVersion : 30,
+            versionName      : "V1.10.2",
+            versionCode      : Integer.parseInt(versionCodeDate)
+    ]
+
+    libsVersion = [
+            appcompatVersion   : "1.2.0",
+            materialVersion    : "1.2.1",
+            constraintlayout   : "2.0.1",
+//            multidex           : "1.0.3",
+            junitVersion       : "4.13.2",
+            testJunitVersion   : "1.1.1",
+            testEspressoVersion: "3.3.0"
+    ]
+
+    dependencies = [
+
+            appcompat       : "androidx.appcompat:appcompat:${libsVersion.appcompatVersion}",
+            material        : "com.google.android.material:material:${libsVersion.materialVersion}",
+            constraintlayout: "androidx.constraintlayout:constraintlayout:${libsVersion.constraintlayout}",
+//            multidex        : "com.android.support:multidex:${libsVersion.multidex}",
+            junit           : "junit:junit:${libsVersion.junitVersion}",
+            testJunit       : "androidx.test.ext:junit:${libsVersion.testJunitVersion}",
+            testEspresso    : "androidx.test.espresso:espresso-core:${libsVersion.testEspressoVersion}"
+    ]
+}
