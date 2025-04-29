@@ -1,0 +1,2 @@
+rootProject.name = "ViewCmdDemo"
+include ':h37z',':sdk'

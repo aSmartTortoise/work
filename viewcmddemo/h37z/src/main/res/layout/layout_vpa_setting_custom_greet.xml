@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.voyah.h37z.VpaViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/setting_personal"
+        descText="@{``}">
+
+        <TextView
+            android:id="@+id/tv_custom_greet_title"
+            style="@style/common_vpa_text_title"
+            android:text="@string/settings_custom_greet_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/rl_custom_greet_0"
+            android:layout_width="832px"
+            android:layout_height="440px"
+            android:layout_marginTop="26px"
+            android:background="@mipmap/vpa_custom_greet_0_bg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_custom_greet_title">
+
+            <TextView
+                android:id="@+id/tv_custom_greet_0"
+                style="@style/common_vpa_text_main"
+                android:layout_marginStart="38px"
+                android:layout_marginTop="38px"
+                android:text="@string/settings_item_custom_greet_0" />
+
+            <ImageView
+                android:id="@+id/iv_custom_greet_0"
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="40px"
+                android:layout_marginBottom="24px"
+                android:src="@mipmap/vpa_ic_voice_recorder" />
+
+            <TextView
+                android:id="@+id/et_custom_greet_0"
+                android:layout_width="648px"
+                android:layout_height="80px"
+                android:layout_alignTop="@+id/iv_custom_greet_0"
+                android:layout_alignBottom="@+id/iv_custom_greet_0"
+                android:layout_marginStart="24px"
+                android:layout_toEndOf="@+id/iv_custom_greet_0"
+                android:background="@drawable/rect_vpa_edit_bg"
+                android:gravity="center_vertical"
+                android:onClick="@{()->viewModel.showCustomGreetDialog(context, 1)}"
+                android:paddingStart="38px"
+                android:text="@{viewModel.getCustomGreet(1)}"
+                android:textColor="#333333"
+                android:textSize="32px" />
+
+            <ImageView
+                android:id="@+id/iv_custom_greet_0_edit"
+                android:layout_width="48px"
+                android:layout_height="48px"
+                android:layout_alignTop="@+id/et_custom_greet_0"
+                android:layout_alignEnd="@+id/et_custom_greet_0"
+                android:layout_alignBottom="@+id/et_custom_greet_0"
+                android:layout_marginEnd="40px"
+                android:src="@mipmap/vpa_ic_edit" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_custom_greet_1"
+            android:layout_width="832px"
+            android:layout_height="440px"
+            android:layout_marginStart="50px"
+            android:background="@mipmap/vpa_custom_greet_1_bg"
+            app:layout_constraintStart_toEndOf="@+id/rl_custom_greet_0"
+            app:layout_constraintTop_toTopOf="@+id/rl_custom_greet_0">
+
+            <TextView
+                android:id="@+id/tv_custom_greet_1"
+                style="@style/common_vpa_text_main"
+                android:layout_marginStart="38px"
+                android:layout_marginTop="38px"
+                android:text="@string/settings_item_custom_greet_1" />
+
+            <ImageView
+                android:id="@+id/iv_custom_greet_1"
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="40px"
+                android:layout_marginBottom="24px"
+                android:src="@mipmap/vpa_ic_voice_recorder" />
+
+            <TextView
+                android:id="@+id/et_custom_greet_1"
+                android:layout_width="648px"
+                android:layout_height="80px"
+                android:layout_alignTop="@+id/iv_custom_greet_1"
+                android:layout_alignBottom="@+id/iv_custom_greet_1"
+                android:layout_marginStart="24px"
+                android:layout_toEndOf="@+id/iv_custom_greet_1"
+                android:background="@drawable/rect_vpa_edit_bg"
+                android:gravity="center_vertical"
+                android:onClick="@{()->viewModel.showCustomGreetDialog(context, 2)}"
+                android:paddingStart="38px"
+                android:text="@{viewModel.getCustomGreet(2)}"
+                android:textColor="#333333"
+                android:textSize="32px" />
+
+            <ImageView
+                android:id="@+id/iv_custom_greet_1_edit"
+                android:layout_width="48px"
+                android:layout_height="48px"
+                android:layout_alignTop="@+id/et_custom_greet_1"
+                android:layout_alignEnd="@+id/et_custom_greet_1"
+                android:layout_alignBottom="@+id/et_custom_greet_1"
+                android:layout_marginEnd="40px"
+                android:src="@mipmap/vpa_ic_edit" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_custom_greet_2"
+            android:layout_width="832px"
+            android:layout_height="440px"
+            android:layout_marginTop="50px"
+            android:background="@mipmap/vpa_custom_greet_2_bg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rl_custom_greet_0">
+
+            <TextView
+                android:id="@+id/tv_custom_greet_2"
+                style="@style/common_vpa_text_main"
+                android:layout_marginStart="38px"
+                android:layout_marginTop="38px"
+                android:text="@string/settings_item_custom_greet_2" />
+
+            <ImageView
+                android:id="@+id/iv_custom_greet_2"
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="40px"
+                android:layout_marginBottom="24px"
+                android:src="@mipmap/vpa_ic_voice_recorder" />
+
+            <TextView
+                android:id="@+id/et_custom_greet_2"
+                android:layout_width="648px"
+                android:layout_height="80px"
+                android:layout_alignTop="@+id/iv_custom_greet_2"
+                android:layout_alignBottom="@+id/iv_custom_greet_2"
+                android:layout_marginStart="24px"
+                android:layout_toEndOf="@+id/iv_custom_greet_2"
+                android:background="@drawable/rect_vpa_edit_bg"
+                android:gravity="center_vertical"
+                android:onClick="@{()->viewModel.showCustomGreetDialog(context, 4)}"
+                android:paddingStart="38px"
+                android:text="@{viewModel.getCustomGreet(4)}"
+                android:textColor="#333333"
+                android:textSize="32px" />
+
+            <ImageView
+                android:id="@+id/iv_custom_greet_2_edit"
+                android:layout_width="48px"
+                android:layout_height="48px"
+                android:layout_alignTop="@+id/et_custom_greet_2"
+                android:layout_alignEnd="@+id/et_custom_greet_2"
+                android:layout_alignBottom="@+id/et_custom_greet_2"
+                android:layout_marginEnd="40px"
+                android:src="@mipmap/vpa_ic_edit" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_custom_greet_3"
+            android:layout_width="832px"
+            android:layout_height="440px"
+            android:layout_marginStart="50px"
+            android:background="@mipmap/vpa_custom_greet_3_bg"
+            app:layout_constraintStart_toEndOf="@+id/rl_custom_greet_2"
+            app:layout_constraintTop_toTopOf="@+id/rl_custom_greet_2">
+
+            <TextView
+                android:id="@+id/tv_custom_greet_3"
+                style="@style/common_vpa_text_main"
+                android:layout_marginStart="38px"
+                android:layout_marginTop="38px"
+                android:text="@string/settings_item_custom_greet_3" />
+
+            <ImageView
+                android:id="@+id/iv_custom_greet_3"
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="40px"
+                android:layout_marginBottom="24px"
+                android:src="@mipmap/vpa_ic_voice_recorder" />
+
+            <TextView
+                android:id="@+id/et_custom_greet_3"
+                android:layout_width="648px"
+                android:layout_height="80px"
+                android:layout_alignTop="@+id/iv_custom_greet_3"
+                android:layout_alignBottom="@+id/iv_custom_greet_3"
+                android:layout_marginStart="24px"
+                android:layout_toEndOf="@+id/iv_custom_greet_3"
+                android:background="@drawable/rect_vpa_edit_bg"
+                android:gravity="center_vertical"
+                android:onClick="@{()->viewModel.showCustomGreetDialog(context, 8)}"
+                android:paddingStart="38px"
+                android:text="@{viewModel.getCustomGreet(8)}"
+                android:textColor="#333333"
+                android:textSize="32px" />
+
+            <ImageView
+                android:id="@+id/iv_custom_greet_3_edit"
+                android:layout_width="48px"
+                android:layout_height="48px"
+                android:layout_alignTop="@+id/et_custom_greet_3"
+                android:layout_alignEnd="@+id/et_custom_greet_3"
+                android:layout_alignBottom="@+id/et_custom_greet_3"
+                android:layout_marginEnd="40px"
+                android:src="@mipmap/vpa_ic_edit" />
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

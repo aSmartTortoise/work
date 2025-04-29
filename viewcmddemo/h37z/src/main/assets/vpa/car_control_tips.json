@@ -1,0 +1,175 @@
+{
+  "data": [
+    {
+      "title": "空调",
+      "image": "ic_voice_aircondition",
+      "tips": [
+        "打开空调",
+        "温度调到25度",
+        "切换吹⾯模式"
+      ]
+    },
+    {
+      "title": "座椅",
+      "image": "ic_voice_seat",
+      "tips": [
+        "打开座椅通⻛",
+        "打开座椅加热",
+        "打开座椅按摩"
+      ]
+    },
+    {
+      "title": "车窗",
+      "image": "ic_voice_window",
+      "tips": [
+        "打开前排⻋窗",
+        "⻋窗关⼀半",
+        "关闭后排⻋窗"
+      ]
+    },
+    {
+      "title": "车灯",
+      "image": "ic_voice_light",
+      "tips": [
+        "打开阅读灯",
+        "氛围灯调成紫色",
+        "打开雾灯"
+      ]
+    },
+    {
+      "title": "香氛&遮阳帘",
+      "image": "ic_voice_fragrance_curtain",
+      "tips": [
+        "打开⾹氛",
+        "打开遮阳帘",
+        ""
+      ]
+    },
+    {
+      "title": "ADAS",
+      "image": "ic_voice_adas",
+      "tips": [
+        "打开驾驶辅助",
+        "打开⾃动泊⻋",
+        "打开360环视"
+      ]
+    },
+    {
+      "title": "ADAS_0",
+      "image": "ic_voice_adas",
+      "tips": [
+        "打开驾驶辅助_0",
+        "打开⾃动泊⻋_0",
+        "打开360环视_0"
+      ]
+    },
+    {
+      "title": "ADAS_1",
+      "image": "ic_voice_adas",
+      "tips": [
+        "打开驾驶辅助_1",
+        "打开⾃动泊⻋_1",
+        "打开360环视_1"
+      ]
+    },
+    {
+      "title": "ADAS_2",
+      "image": "ic_voice_adas",
+      "tips": [
+        "打开驾驶辅助_2",
+        "打开⾃动泊⻋_2",
+        "打开360环视_2"
+      ]
+    },
+    {
+      "title": "ADAS_3",
+      "image": "ic_voice_adas",
+      "tips": [
+        "打开驾驶辅助_3",
+        "打开⾃动泊⻋_3",
+        "打开360环视_3"
+      ]
+    },
+    {
+      "title": "ADAS_4",
+      "image": "ic_voice_adas",
+      "tips": [
+        "打开驾驶辅助_4",
+        "打开⾃动泊⻋_4",
+        "打开360环视_4"
+      ]
+    },
+    {
+      "title": "ADAS_5",
+      "image": "ic_voice_adas",
+      "tips": [
+        "打开驾驶辅助_5",
+        "打开⾃动泊⻋_5",
+        "打开360环视_5"
+      ]
+    },
+    {
+      "title": "ADAS_6",
+      "image": "ic_voice_adas",
+      "tips": [
+        "打开驾驶辅助_6",
+        "打开⾃动泊⻋_6",
+        "打开360环视_6"
+      ]
+    },
+    {
+      "title": "ADAS_7",
+      "image": "ic_voice_adas",
+      "tips": [
+        "打开驾驶辅助_7",
+        "打开⾃动泊⻋_7",
+        "打开360环视_7"
+      ]
+    },
+    {
+      "title": "ADAS_8",
+      "image": "ic_voice_adas",
+      "tips": [
+        "打开驾驶辅助_8",
+        "打开⾃动泊⻋_8",
+        "打开360环视_8"
+      ]
+    },
+    {
+      "title": "ADAS_9",
+      "image": "ic_voice_adas",
+      "tips": [
+        "打开驾驶辅助_9",
+        "打开⾃动泊⻋_9",
+        "打开360环视_9"
+      ]
+    },
+    {
+      "title": "ADAS_10",
+      "image": "ic_voice_adas",
+      "tips": [
+        "打开驾驶辅助_10",
+        "打开⾃动泊⻋_10",
+        "打开360环视_10"
+      ]
+    },
+    {
+      "title": "ADAS_11",
+      "image": "ic_voice_adas",
+      "tips": [
+        "打开驾驶辅助_11",
+        "打开⾃动泊⻋_11",
+        "打开360环视_11"
+      ]
+    },
+    {
+      "title": "ADAS_12",
+      "image": "ic_voice_adas",
+      "tips": [
+        "打开驾驶辅助_12",
+        "打开⾃动泊⻋_12",
+        "打开360环视_12"
+      ]
+    }
+  ]
+}

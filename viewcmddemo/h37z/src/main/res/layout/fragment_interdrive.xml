@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.github.gzuliyujiang.wheelview.widget.WheelView
+            android:id="@+id/year"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:layout_weight="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:wheel_cyclicEnabled="true"
+            app:wheel_indicatorEnabled="false"
+            app:wheel_itemSpace="@dimen/dp_80"
+            app:wheel_itemTextColor="#9C9C9C"
+            app:wheel_itemTextColorSelected="@color/black"
+            app:wheel_itemTextSize="26sp"
+            app:wheel_itemTextSizeSelected="26sp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

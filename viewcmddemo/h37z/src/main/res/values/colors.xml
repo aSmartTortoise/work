@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="black10">#1A000000</color>
+    <color name="black14">#14000000</color>
+    <color name="black18">#FF181818</color>
+    <color name="black30">#4D000000</color>
+    <color name="black_bubble">#FF000000</color>
+    <color name="black08">#16000000</color>
+
+    <color name="main_bg">#FFF7F7F7</color>
+    <color name="main_bg2">#FFF4F2F1</color>
+    <color name="main_bg_new">#FFF2F1F1</color>
+    <color name="statusbar_color_light">#00000000</color><!--#F2F1F1-->
+    <color name="statusbar_color_dark">#0F1012</color>
+
+    <color name="white">#FFFFFFFF</color>
+    <color name="theme_white">#FFF4F4F4</color>
+    <color name="white_ec">#ECECEC</color>
+    <color name="white_50">#80FFFFFF</color>
+    <color name="white_10">#1AFFFFFF</color>
+    <color name="white_e6">#FFE6E6E6</color>
+    <color name="white_F7">#FFF7F7F7</color>
+    <color name="white_A99">#99FFFFFF</color>
+    <color name="white_f9">#FFF9F9F9</color>
+    <color name="white_fb">#FFFBFBFB</color>
+    <color name="white_2fb">#80FBFBFB</color>
+    <color name="white_fe">#FFFEFEFE</color>
+    <color name="white_3fb">#80F5F8FE</color>
+    <color name="white_fb_f5">#FFFBFBFB</color>
+    <color name="white_ff_42">#FFFFFFFF</color>
+    <color name="theme_white_ff_42">#424448</color>
+    <color name="white_fe_42">#FFFEFEFE</color>
+    <color name="white_ff_1f">#FFFFFFFF</color>
+    <color name="white_clean">#7F7F7F</color>
+    <color name="white_cc_1f">#1F2022</color>
+    <color name="white_ec_ef">#ECEDEF</color>
+    <color name="white_99_33F4">#99FFFFFF</color>
+    <color name="white_amb_60">#99FFFFFF</color>
+
+    <color name="gray_033">#1A333333</color>
+    <color name="gray_133">#0D333333</color>
+    <color name="gray_33">#FF333333</color>
+    <color name="gray_233">#33333333</color>
+    <color name="gray_433">#4D333333</color>
+    <color name="gray_533">#80333333</color>
+    <color name="gray_733">#B3333333</color>
+    <color name="gray_833">#CC333333</color>
+    <color name="gray_933">#99333333</color>
+    <color name="gray_8033">#80333333</color>
+    <color name="gray_33_1A">#0D333333</color>
+    <color name="gray_39">#FF393939</color>
+    <color name="gray_3A">#FF3A3A3A</color>
+    <color name="gray_35">#FF353535</color>
+    <color name="gray_53">#1A535353</color>
+    <color name="gray_54">#FF545454</color>
+    <color name="gray_40">#D3444040</color>
+    <color name="gray_69">#FF696969</color>
+    <color name="gray_99">#FF999999</color>
+    <color name="gray_9D">#FF9D9D9D</color>
+    <color name="gray_cc">#FFCCCCCC</color>
+    <color name="gray_c4">#FFC4C4C4</color>
+    <color name="gray_da">#33DADEE3</color>
+    <color name="gray_dc">#FFDCDCDC</color>
+    <color name="gray_dd">#FFDDDDDD</color>
+    <color name="gray_82">#FF828282</color>
+    <color name="gray_e6">#FFE6E6E6</color>
+    <color name="gray_2e6">#33E6E6E6</color>
+    <color name="gray_1e6">#1AE6E6E6</color>
+    <color name="gray_ar_hud">#CC333333</color>
+    <color name="gray_sound">#80333333</color>
+    <color name="gray_dc_tst">#FFDCDCDC</color>
+    <color name="gray_dc_tst2">#FF90F5FF</color>
+    <color name="white_line">#66DADADA</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="white_8080">#808080</color>
+    <color name="gray_amb_line">#FFDCDCDC</color>
+    <color name="sound_char_e6">#E6D7DADE</color>
+    <color name="sound_char_btn">#FBFBFB </color>
+
+    <color name="charging">#FF2CD26E</color>
+    <color name="discharge">#FF00ADF5 </color>
+    <color name="discharging">#FFFF434F</color>
+    <color name="preheat">#FFF49B26</color>
+    <color name="green">#FF00FF00</color>
+    <color name="green_3DC">#FF3DC66A</color>
+    <color name="red">#FFFF0000</color>
+    <color name="red_FF4">#FFFF434F</color>
+    <color name="blue">#FF0000FF</color>
+    <color name="ac_wind">#00CCF5</color>
+    <color name="tab_blue">#08C0E5</color>
+    <color name="tab_blue_50">#4D08C0E5</color>
+    <color name="light_blue">#FFEFF3F5</color>
+    <color name="rg_blue">#FFE9EDF0</color>
+    <color name="blue_4DE">#4DEFF3F5</color>
+    <color name="blue_F0">#FFF0F3F6</color>
+    <color name="blue_CF1">#FF00CCF1</color>
+    <color name="blue_progress">#FF1BCFF3</color>
+    <color name="blue_soft">#6ADDF4</color>
+    <color name="purple_B8">#FFB871ED</color>
+    <color name="brown_B6">#FFB69B83</color>
+    <color name="green_55">#FF55C763</color>
+
+    <!-- drive mode  -->
+    <color name="eco_mode">#FF3DC66A</color>
+    <color name="sport_mode">#FFFF434F</color>
+    <color name="comfort_mode">#FF00CCF1</color>
+    <color name="all_road_mode">#FFB69B83</color>
+    <color name="individual_mode">#FFB871ED</color>
+
+    <color name="brightness_progress">#FFFFFFFF</color>
+    <color name="brightness_progress_bg">#FF282b31</color>
+    <color name="brightness_progress_color">#FF36485A</color>
+    <color name="amb_light_follow_music_select_bg">#FF1E90FF</color>
+    <color name="item_bg">#FF242527</color>
+
+    <color name="seat_adjust_wind_selected">#FF4A90E2</color>
+    <color name="seat_adjust_hot_selected">#FFFF6363</color>
+    <color name="seat_adjust_massage_selected">#FFE197FF</color>
+    <color name="seat_massage_model_selected">#FF1E90FF</color>
+
+    <color name="safety_switch_track_on">#FF1BCFF3</color>
+    <color name="safety_switch_track_off">#FFDFE1E3</color>
+
+    <!--  7.11 新增  -->
+    <color name="dark">#272424</color>
+    <color name="gray">#FF545454</color>
+    <color name="gray_4f">#4f4f4f</color>
+    <color name="gray_38">#383838</color>
+    <color name="red_">#FA0101</color>
+    <color name="white_9d">#9d9d9d</color>
+    <color name="white_a4">#a4a4a4</color>
+
+    <!--  显示 新增  -->
+    <color name="clean_blue">#FF00CCF5</color>
+    <color name="clean_blue_exit">#FF001B1E</color>
+    <color name="theme_dialog_bg">#66333333</color>
+    <color name="photo_selected">#08C3F3</color>
+
+    <!--  连接 新增  -->
+    <color name="white_ff_80">#E6FFFFFF</color>
+    <color name="white_f6">#F0F3F6</color>
+    <color name="black_33">#333333</color>
+    <color name="theme_black_33">#F4F4F4</color>
+    <color name="black_33_line">#1A333333</color>
+    <color name="black_33_sub">#333333</color>
+    <color name="black_33_cc">#333333</color>
+    <color name="blue_f5">#00CCF5</color>
+    <color name="blue_08">#FF08C0E5</color>
+    <color name="blue_f5_10">#1A00CCF5</color>
+    <color name="blue_f5_50">#8000CCF5</color>
+    <color name="black_33_60">#99333333</color>
+    <color name="black_33_10">#1A333333</color>
+    <color name="red_47">#FF4747</color>
+    <color name="red_461">#F46161</color>
+    <color name="shadow_blue_08">#6608C0E5</color>
+
+    <!--  ar hud 新增  -->
+    <color name="gray_ef0">#BAE9EDF0</color>
+
+    <color name="gray_ee3">#DADEE3</color>
+    <color name="gray_df0">#E9EDF0</color>
+    <color name="black_33_70">#B3333333</color>
+    <color name="white_80">#CCFFFFFF</color>
+    <color name="gray_f0">#E9EDF0</color>
+
+    <color name="shadow">#0A000000</color>
+    <color name="shadow2">#80FF0000</color>
+
+    <!--  我的岚图 名称  -->
+    <color name="bg_voyah_name_enable">#08C0E5</color>
+    <color name="bg_voyah_name_disable">#91DAE9</color>
+
+    <!--  氛围灯  -->
+    <color name="light_mode_eco">#00FF2F</color>
+    <color name="light_mode_comfort">#005FFF</color>
+    <color name="light_mode_sport">#FF0000</color>
+    <color name="light_mode_off_road">#FFA80A</color>
+    <color name="light_mode_custom">#4152FF</color>
+    <color name="light_mode_snow">#00C8FF</color>
+    <color name="amb_light_choose_frame">#08C3F3</color>
+
+    <color name="ota_blue_f5">#00ADF5</color>
+    <color name="system_service_terms">#08C0E5</color>
+    <color name="white_11">#1CFFFFFF</color>
+
+    <color name="white_e8">#BFCFE8</color>
+    <color name="white_f0">#DCE4F0</color>
+    <color name="white_f1">#DEE6F1</color>
+
+    <color name="blue_c0">#8DA7C0</color>
+    <color name="blue_ff">#CC2BEFFF</color>
+    <color name="blue_f0">#704CABF0</color>
+    <color name="blue_df">#990D53DF</color>
+
+    <color name="black_33_50">#80333333</color>
+    <color name="black_33_80">#CC333333</color>
+    <color name="blue_80_sound">#b32e4aff</color>
+    <color name="sound_73_66_ff">#73ffffff</color>
+    <color name="display_0806_00">#10000000</color>
+    <color name="display_setting_bg">#99333333</color>
+
+    <color name="bg_drive_info_deal">#FFFFFFFF</color>
+    <color name="bg_drive_info_divide">#14333333</color>
+
+    <color name="vpa_setting_item_bg">#0fFFFFFF</color>
+    <color name="vpa_setting_selected_item_bg">#ff56575A</color>
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cst_item_viewcmd_tip"
+    android:layout_width="364px"
+    android:layout_height="286px"
+    android:background="@drawable/rect_item_common_tip_bg"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <TextView
+        android:id="@+id/tvItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textColor="#333"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingDefaultResource" />
+
+    <TextView
+        android:id="@+id/tv_corner"
+        android:layout_width="56px"
+        android:layout_height="56px"
+        android:background="@drawable/round_corner_bg"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="32px"
+        app:layout_constraintStart_toStartOf="@id/cst_item_viewcmd_tip"
+        app:layout_constraintTop_toTopOf="@id/cst_item_viewcmd_tip" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

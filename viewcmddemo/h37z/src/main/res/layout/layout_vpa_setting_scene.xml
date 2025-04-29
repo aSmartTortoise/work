@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.voyah.h37z.VpaViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/setting_wakeup">
+
+        <TextView
+            android:id="@+id/tv_all_scene_title"
+            style="@style/common_vpa_text_title"
+            android:text="@string/settings_all_scene_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/rl_continuous_dialogue"
+            android:layout_width="832px"
+            android:layout_height="440px"
+            android:layout_marginTop="26px"
+            android:background="@mipmap/vpa_continuous_scene_bg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_all_scene_title">
+
+            <Switch
+                android:id="@+id/sw_continuous_dialogue"
+                viewcmd="@{`连续识别模式`}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40px"
+                android:layout_marginTop="30px"
+                android:checked="@{viewModel.continuousDialogueEnable}"
+                android:thumb="@drawable/common_switch_thumb_selector"
+                android:track="@drawable/common_switch_track_selector" />
+
+            <TextView
+                android:id="@+id/tv_continuous_dialogue"
+                style="@style/common_vpa_text_main"
+                android:layout_marginStart="30px"
+                android:layout_marginTop="12px"
+                android:layout_toEndOf="@+id/sw_continuous_dialogue"
+                android:text="@string/settings_item_continuous_dialogue" />
+
+            <TextView
+                android:id="@+id/continuous_dialogue_content"
+                style="@style/common_vpa_text_content"
+                android:layout_below="@+id/tv_continuous_dialogue"
+                android:layout_alignStart="@+id/tv_continuous_dialogue"
+                android:layout_marginTop="4px"
+                android:text="@string/settings_item_continuous_dialogue_tips" />
+
+            <ImageView
+                android:id="@+id/iv_continuous_dialogue"
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:onClick="@{viewModel.showContinueDialogueDialog}"
+                android:padding="10px"
+                android:src="@mipmap/vpa_ic_details"
+                app:viewcmd="@{`连续识别模式详情`}" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_view_cmd"
+            android:layout_width="832px"
+            android:layout_height="440px"
+            android:layout_marginStart="50px"
+            android:background="@mipmap/vpa_viewcmd_scene_bg"
+            app:layout_constraintStart_toEndOf="@id/rl_continuous_dialogue"
+            app:layout_constraintTop_toTopOf="@+id/rl_continuous_dialogue">
+
+            <TextView
+                android:id="@+id/tv_view_cmd"
+                style="@style/common_vpa_text_title"
+                android:layout_marginStart="40px"
+                android:layout_marginTop="12px"
+                android:text="@string/settings_item_view_cmd" />
+
+            <TextView
+                android:id="@+id/tv_view_cmd_content"
+                style="@style/common_vpa_text_content"
+                android:layout_below="@+id/tv_view_cmd"
+                android:layout_alignStart="@+id/tv_view_cmd"
+                android:layout_marginTop="4px"
+                android:text="@string/settings_item_view_cmd_tips" />
+
+            <ImageView
+                android:id="@+id/iv_view_cmd"
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:onClick="@{viewModel.showViewCmdDialog}"
+                android:padding="10px"
+                android:src="@mipmap/vpa_ic_details"
+                app:viewcmd="@{`可见即可说|可见即可说详情`}" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_voice_touch"
+            android:layout_width="832px"
+            android:layout_height="440px"
+            android:layout_marginTop="50px"
+            android:background="@mipmap/vpa_voice_touch_scene_bg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rl_continuous_dialogue">
+
+            <TextView
+                android:id="@+id/tv_voice_touch"
+                style="@style/common_vpa_text_main"
+                android:layout_marginStart="40px"
+                android:layout_marginTop="12px"
+                android:text="@string/settings_item_voice_touch" />
+
+            <TextView
+                android:id="@+id/tv_voice_touch_content"
+                style="@style/common_vpa_text_content"
+                android:layout_below="@id/tv_voice_touch"
+                android:layout_alignStart="@id/tv_voice_touch"
+                android:layout_marginTop="4px"
+                android:text="@string/settings_item_voice_touch_tips" />
+
+            <ImageView
+                android:id="@+id/iv_voice_touch"
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:onClick="@{viewModel.showVoiceTouchDialog}"
+                android:padding="10px"
+                android:src="@mipmap/vpa_ic_details"
+                app:viewcmd="@{`一语触达|一语触达详情`}" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_car_control"
+            android:layout_width="832px"
+            android:layout_height="440px"
+            android:layout_marginStart="50px"
+            android:layout_marginTop="50px"
+            android:background="@mipmap/vpa_car_control_scene_bg"
+            app:layout_constraintStart_toEndOf="@id/rl_voice_touch"
+            app:layout_constraintTop_toBottomOf="@+id/rl_continuous_dialogue">
+
+            <TextView
+                android:id="@+id/tv_car_control"
+                style="@style/common_vpa_text_main"
+                android:layout_marginStart="40px"
+                android:layout_marginTop="12px"
+                android:text="@string/settings_item_car_control" />
+
+            <TextView
+                android:id="@+id/tv_car_control_content"
+                style="@style/common_vpa_text_content"
+                android:layout_below="@+id/tv_car_control"
+                android:layout_alignStart="@+id/tv_car_control"
+                android:layout_marginTop="4px"
+                android:text="@string/settings_item_car_control_tips" />
+
+            <ImageView
+                android:id="@+id/iv_car_control"
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:onClick="@{viewModel.showCarControlDialog}"
+                android:padding="10px"
+                android:src="@mipmap/vpa_ic_details"
+                app:viewcmd="@{`语音车控|语音车控详情`}" />
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

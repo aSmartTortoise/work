@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/sv_left"
+        android:layout_width="150dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:contentDescription="Gesture:V+P"
+        android:background="#4F00BCD4">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:text="第一个" />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:text="第二个" />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:text="第三个" />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:text="第四个" />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:text="第五个" />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:text="第六个" />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:text="第七个" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <HorizontalScrollView
+        android:id="@+id/sv_right"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/sv_left"
+        android:contentDescription="Gesture:Horizontal"
+        android:background="#4BFFEB3B">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="20dp"
+                android:text="第一个" />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="20dp"
+                android:text="第二个" />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="20dp"
+                android:text="第三个" />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="20dp"
+                android:text="第四个" />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="20dp"
+                android:text="第五个" />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="20dp"
+                android:text="第六个" />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="20dp"
+                android:text="第七个" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+</RelativeLayout>

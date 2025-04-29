@@ -1,0 +1,77 @@
+<resources>
+    <!--可见即可说特有属性申明-->
+    <string name="attr_desc_text">DescText</string>
+    <string name="attr_priority">Priority</string>
+    <string name="attr_unsafe_ope">Unsafe</string>
+    <string name="attr_view_cmd">ViewCmd</string>
+    <string name="attr_switch">Switch</string>
+    <string name="attr_bind_click">BindClick</string>
+    <string name="attr_viewcmd_type">ViewCmdType</string>
+    <!--可见即可说类型值-->
+    <string name="attr_viewcmd_type_value_global">Global</string>
+    <string name="attr_viewcmd_type_value_kws">KWS</string>
+    <string name="attr_viewcmd_type_value_normal">Normal</string>
+
+    <!--可见即可说值-->
+    <string name="attr_value_true">true</string>
+    <!--unsafe值-->
+    <string name="attr_unsafe_value_none">None</string>
+    <string name="attr_unsafe_value_driver">Driver</string>
+    <string name="attr_unsafe_value_front">Front</string>
+    <!--priority值-->
+    <string name="attr_priority_value_high">High</string>
+    <string name="attr_priority_value_driver">Driver</string>
+    <string name="attr_priority_value_passenger">Passenger</string>
+
+    <string name="attr_gesture">Gesture</string>
+    <!--gesture值-->
+    <string name="attr_gesture_value_vertical">Vertical</string>
+    <string name="attr_gesture_value_horizontal">Horizontal</string>
+    <string name="attr_gesture_value_page">Page</string>
+    <string name="attr_gesture_value_vertical_horizontal">V+H</string>
+    <string name="attr_gesture_value_vertical_page">V+P</string>
+    <string name="attr_gesture_value_horizontal_page">H+P</string>
+    <string name="attr_gesture_value_all">H+V+P</string>
+
+    <string name="attr_tab">Tab</string>
+    <string name="attr_list">List</string>
+    <!--list值-->
+    <string name="attr_list_value_poi">Poi</string>
+    <string name="attr_list_value_route">Route</string>
+    <string name="attr_list_value_music">Music</string>
+    <string name="attr_list_value_book">Book</string>
+    <string name="attr_list_value_radio">Radio</string>
+    <string name="attr_list_value_audio">Audio</string>
+    <string name="attr_list_value_video">Video</string>
+    <string name="attr_list_value_shortVideo">ShortVideo</string>
+    <string name="attr_list_value_ktv">Ktv</string>
+    <string name="attr_list_value_contact">Contact</string>
+    <string name="attr_list_value_game">Game</string>
+    <string name="attr_list_value_picture">Picture</string>
+    <string name="attr_list_value_recording">Recording</string>
+    <string name="attr_list_value_schedule">Schedule</string>
+    <string name="attr_list_value_aimodel">AImodel</string>
+    <string name="attr_list_value_common">Common</string>
+
+    <string name="attr_badge">Badge</string>
+    <!--badge值-->
+    <string name="attr_badge_value_poi">Poi</string>
+    <string name="attr_badge_value_route">Route</string>
+    <string name="attr_badge_value_music">Music</string>
+    <string name="attr_badge_value_book">Book</string>
+    <string name="attr_badge_value_radio">Radio</string>
+    <string name="attr_badge_value_audio">Audio</string>
+    <string name="attr_badge_value_video">Video</string>
+    <string name="attr_badge_value_shortVideo">ShortVideo</string>
+    <string name="attr_badge_value_ktv">Ktv</string>
+    <string name="attr_badge_value_contact">Contact</string>
+    <string name="attr_badge_value_game">Game</string>
+    <string name="attr_badge_value_picture">Picture</string>
+    <string name="attr_badge_value_recording">Recording</string>
+    <string name="attr_badge_value_schedule">Schedule</string>
+    <string name="attr_badge_value_aimodel">AImodel</string>
+    <string name="attr_badge_value_common">Common</string>
+
+    <string name="tag_viewcmd_click">viewcmd_click</string>
+
+</resources>

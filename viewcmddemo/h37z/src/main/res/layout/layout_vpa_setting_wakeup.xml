@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.voyah.h37z.VpaViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_wakeup_title"
+            style="@style/common_vpa_text_title"
+            descText="@{`true`}"
+            android:layout_marginTop="40px"
+            android:text="@string/settings_wakeup_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/rl_wakeup_main"
+            android:layout_width="832px"
+            android:layout_height="122px"
+            android:layout_marginTop="24px"
+            android:background="@drawable/rect_vpa_setting_item_bg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_wakeup_title">
+
+            <Switch
+                android:id="@+id/sw_wakeup_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="40px"
+                android:checked="@{viewModel.mainWakeupEnable}"
+                android:thumb="@drawable/common_switch_thumb_selector"
+                android:track="@drawable/common_switch_track_selector"
+                viewcmd="@{`语音唤醒`}"/>
+
+            <TextView
+                android:id="@+id/tv_wakeup_main"
+                style="@style/common_vpa_text_main"
+                android:layout_marginStart="30px"
+                android:layout_marginTop="11px"
+                android:layout_toEndOf="@+id/sw_wakeup_main"
+                android:text="@string/settings_item_wakeup_main"
+                descText="@{`true`}"/>
+
+            <TextView
+                style="@style/common_vpa_text_content"
+                descText="@{`true`}"
+                android:layout_below="@id/tv_wakeup_main"
+                android:layout_alignStart="@+id/tv_wakeup_main"
+                android:layout_marginTop="3px"
+                android:layout_toEndOf="@+id/sw_wakeup_main"
+                android:text="@string/settings_item_wakeup_main_tips" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_wakeup_global"
+            android:layout_width="832px"
+            android:layout_height="122px"
+            android:layout_marginStart="52px"
+            android:background="@drawable/rect_vpa_setting_item_bg"
+            app:layout_constraintStart_toEndOf="@+id/rl_wakeup_main"
+            app:layout_constraintTop_toTopOf="@+id/rl_wakeup_main"
+            viewCmdType="@{@string/attr_viewcmd_type_value_global}">
+
+            <Switch
+                android:id="@+id/sw_wakeup_global"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="40px"
+                android:checked="@{viewModel.globalWakeupEnable}"
+                android:enabled="@{viewModel.isMainWakeupEnable}"
+                android:thumb="@drawable/common_switch_thumb_selector"
+                android:track="@drawable/common_switch_track_selector"
+                viewcmd="@{`免唤醒`}" />
+
+            <TextView
+                android:id="@+id/tv_wakeup_global"
+                style="@style/common_vpa_text_main"
+                android:layout_marginStart="30px"
+                android:layout_marginTop="10px"
+                android:layout_toEndOf="@+id/sw_wakeup_global"
+                android:text="@string/settings_item_wakeup_global"
+                descText="@{`true`}"/>
+
+            <TextView
+                style="@style/common_vpa_text_main"
+                descText="@{`true`}"
+                android:layout_alignTop="@id/tv_wakeup_global"
+                android:layout_alignBottom="@id/tv_wakeup_global"
+                android:layout_marginStart="20px"
+                android:layout_toRightOf="@id/tv_wakeup_global"
+                android:background="@drawable/rect_text_beta_bg"
+                android:paddingStart="20px"
+                android:paddingEnd="20px"
+                android:text="Beta"
+                android:textColor="#7f333333"
+                android:textSize="34px" />
+
+            <TextView
+                style="@style/common_vpa_text_content"
+                descText="@{`true`}"
+                android:layout_below="@id/tv_wakeup_global"
+                android:layout_alignStart="@+id/tv_wakeup_global"
+                android:layout_marginTop="3px"
+                android:layout_toEndOf="@+id/sw_wakeup_global"
+                android:text="@string/settings_item_wakeup_global_tips" />
+
+            <ImageView
+                android:id="@+id/iv_detail"
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:onClick="@{viewModel.showGlobalWakeupDialog}"
+                android:padding="10px"
+                android:src="@mipmap/vpa_ic_details"
+                app:viewcmd="@{`免唤醒详情`}" />
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

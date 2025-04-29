@@ -1,0 +1,58 @@
+{
+  "data": [
+    {
+      "title": "设置",
+      "image": "ic_voice_settings",
+      "tips": [
+        "打开通用设置",
+        "打开智能驾驶",
+        "打开车身设置"
+      ]
+    },
+    {
+      "title": "导航",
+      "image": "ic_voice_navigation",
+      "tips": [
+        "打开导航设置",
+        "打开设置车牌",
+        "打开限行界面"
+      ]
+    },
+    {
+      "title": "视频",
+      "image": "ic_voice_video",
+      "tips": [
+        "打开视频",
+        "打开腾讯视频",
+        "开启本地视频"
+      ]
+    },
+    {
+      "title": "电话",
+      "image": "ic_voice_phone",
+      "tips": [
+        "打开电话",
+        "打开通讯录",
+        "打开通话记录"
+      ]
+    },
+    {
+      "title": "本地应用",
+      "image": "ic_voice_local",
+      "tips": [
+        "打开车辆中心",
+        "打开个人中心",
+        "打开车载相册"
+      ]
+    },
+    {
+      "title": "第三方应用",
+      "image": "ic_voice_third",
+      "tips": [
+        "打开车载KTV",
+        "打开游戏大厅",
+        "打开微信"
+      ]
+    }
+  ]
+}

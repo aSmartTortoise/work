@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_all_zone"
+        style="@style/common_vpa_text_title"
+        android:text="@string/dialog_permission_all_zone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_all_zone_word_1"
+        style="@style/common_vpa_text_main"
+        android:layout_width="348px"
+        android:layout_height="122px"
+        android:layout_marginTop="22px"
+        android:background="@drawable/rect_item_tab"
+        android:gravity="center"
+        android:text="@string/dialog_permission_previous_song"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_all_zone" />
+
+    <TextView
+        android:id="@+id/tv_all_zone_word_2"
+        style="@style/common_vpa_text_main"
+        android:layout_width="348px"
+        android:layout_height="122px"
+        android:layout_marginStart="52px"
+        android:background="@drawable/rect_item_tab"
+        android:gravity="center"
+        android:text="@string/dialog_permission_next_song"
+        app:layout_constraintStart_toEndOf="@id/tv_all_zone_word_1"
+        app:layout_constraintTop_toTopOf="@id/tv_all_zone_word_1" />
+
+    <TextView
+        android:id="@+id/tv_driver_zone"
+        style="@style/common_vpa_text_title"
+        android:text="@string/dialog_permission_driver_zone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_all_zone_word_1"
+        android:layout_marginTop="68px"/>
+
+    <TextView
+        android:id="@+id/tv_driver_zone_word_1"
+        style="@style/common_vpa_text_main"
+        android:layout_width="348px"
+        android:layout_height="122px"
+        android:layout_alignStart="@+id/tv_all_zone"
+        android:layout_marginTop="22px"
+        android:background="@drawable/rect_item_tab"
+        android:gravity="center"
+        android:text="@string/dialog_permission_play_music"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_driver_zone" />
+
+    <TextView
+        android:id="@+id/tv_driver_zone_word_2"
+        style="@style/common_vpa_text_main"
+        android:layout_width="348px"
+        android:layout_height="122px"
+        android:layout_marginStart="52px"
+        android:background="@drawable/rect_item_tab"
+        android:gravity="center"
+        android:text="@string/dialog_permission_play_radio"
+        app:layout_constraintStart_toEndOf="@id/tv_driver_zone_word_1"
+        app:layout_constraintTop_toTopOf="@id/tv_driver_zone_word_1" />
+
+    <TextView
+        android:id="@+id/tv_driver_zone_word_3"
+        style="@style/common_vpa_text_main"
+        android:layout_width="348px"
+        android:layout_height="122px"
+        android:layout_alignStart="@+id/tv_all_zone"
+        android:layout_marginTop="52px"
+        android:background="@drawable/rect_item_tab"
+        android:gravity="center"
+        android:text="@string/dialog_permission_continue_play"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_driver_zone_word_1" />
+
+    <TextView
+        android:id="@+id/tv_driver_zone_word_4"
+        style="@style/common_vpa_text_main"
+        android:layout_width="348px"
+        android:layout_height="122px"
+        android:layout_marginStart="52px"
+        android:background="@drawable/rect_item_tab"
+        android:gravity="center"
+        android:text="@string/dialog_permission_pause_play"
+        app:layout_constraintStart_toEndOf="@id/tv_driver_zone_word_3"
+        app:layout_constraintTop_toTopOf="@id/tv_driver_zone_word_3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

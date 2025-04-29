@@ -1,0 +1,108 @@
+plugins {
+    id 'com.android.application'
+}
+//apply plugin: 'android-aspectjx' // 支持7.1.3
+apply plugin: 'io.github.wurensen.android-aspectjx'
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        applicationId "com.voyah.h37z"
+        minSdkVersion 30
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+        dataBinding = true
+        aidl true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    signingConfigs {
+        debug {
+            storeFile file("./key/aosp.keystore") //签名文件路径
+            storePassword 'android'
+            keyAlias 'platform'
+            keyPassword 'android'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+}
+
+aspectjx {
+    // 是否debug，开启后会输出织入信息等相关日志（3.3.0版本新增）
+    debug = false
+    // 是否启动
+    enabled = true
+    // 移除kotlin相关，编译错误和提升速度
+    exclude 'kotlin.jvm', 'kotlin.internal'
+    exclude 'kotlinx.coroutines.internal', 'kotlinx.coroutines.android'
+    // 包含指定的package路径名称做织入，使编译提速
+//    include 'android.app.Activity', 'android.view.View', 'androidx.fragment.app',
+//            'androidx.appcompat.view', 'androidx.recyclerview'
+    include 'android.app', 'androidx', 'android.view.View'
+
+    // 应用根据需要填自己需要的package路径，工程的包名路径需要添加上
+    include 'com.voyah', "com.vcos.common"
+}
+
+dependencies {
+    // 海外语音SDK，与可见即可说演示无关
+    implementation files('libs/AssistantSDK-2023.12.8.aar')
+//    implementation files('libs/VcosCommonWidgets-17.aar')
+    // 语音对外SDK需要依赖
+    // implementation "com.alibaba:fastjson:1.2.68"
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+    implementation files('libs/VoiceSDK-Vcos10-20250211-15.aar')
+//    implementation 'com.voyah.ai.voice.sdk:viewcmd-sdk:1.0-20240925.082214-29'
+    implementation project(':sdk')
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'com.lxj:xpopup:2.2.13'
+    implementation 'q.rorbin:VerticalTabLayout:1.2.5'
+    implementation 'com.vcos.common.widgets:VcosCommonWidgets:3.0.1-20250305.035404-5'
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //implementation 'com.vcos.common.widgets:VcosCommonWidgets:1.0.1-20240426.103438-47'
+
+    implementation "com.github.gzu-liyujiang.AndroidPicker:WheelView:4.1.11"
+
+    compileOnly files('libs/activitytask.jar')
+}
+
+configurations.all {
+    resolutionStrategy {
+        cacheDynamicVersionsFor 0, 'seconds' // 不缓存动态版本（包括 SNAPSHOT）
+        cacheChangingModulesFor 0, 'seconds' // 不缓存正在变化的模块
+    }
+}
