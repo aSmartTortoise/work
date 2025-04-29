@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.voyah.content_provider">
+
+    <application>
+        <provider
+            android:name="com.voyah.content_provider.db.content_provider.VirtualDeviceContentProvider"
+            android:authorities="com.voyah.virtual.device.provider"
+            android:exported="true"
+            android:enabled="true">
+        </provider>
+    </application>
+
+</manifest>

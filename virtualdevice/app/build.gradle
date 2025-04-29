@@ -1,0 +1,66 @@
+plugins {
+    id 'com.android.application'
+}
+
+ext {
+    apkPrefix = 'VirtualDevices'
+    formattedDate = new Date().format("yyyyMMdd")
+}
+
+android {
+    compileSdkVersion 31
+    buildToolsVersion "31.0.0"
+
+    defaultConfig {
+        applicationId "com.voyah.vcos.virtualdevice"
+        minSdkVersion 29
+        targetSdkVersion 31
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        voyah8295 {
+            storeFile file("../keystore/8295_keystore/aosp.keystore")
+            storePassword "android"
+            keyAlias "platform"
+            keyPassword "android"
+        }
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "${apkPrefix}-" + "${android.defaultConfig.versionName}" + "-${formattedDate}" +
+                    ".apk"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation project(path: ':content_provider')
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation('com.google.code.gson:gson:2.8.5')//与app中引用的库冲突，这里不打包
+    //使用注解处理器。
+    implementation project(path: ':filter-annotation')
+    annotationProcessor project(":filter-process")
+}
