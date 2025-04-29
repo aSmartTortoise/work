@@ -1,2 +1,0 @@
--keep class com.voyah.viewcmd.** {*;}
--keep class com.voyah.ai.** {*;}

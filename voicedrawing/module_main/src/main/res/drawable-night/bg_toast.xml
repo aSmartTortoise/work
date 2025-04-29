@@ -1,8 +1,0 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-    <corners android:radius="24dp" />
-    <solid android:color="#ff27292D" />
-    <item android:name="android:shadowColor">#29000000</item>
-    <item android:name="android:shadowDx">0</item>
-    <item android:name="android:shadowDy">40</item>
-</shape>

@@ -1,5 +1,0 @@
-rootProject.name = "VirtualDevice"
-include ':app'
-include ':content_provider'
-include ':filter-annotation'
-include ':filter-process'

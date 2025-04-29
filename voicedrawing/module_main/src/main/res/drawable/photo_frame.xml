@@ -1,4 +1,0 @@
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/photo_frame2" />
-    <item android:drawable="@drawable/photo_frame1" />
-</layer-list>

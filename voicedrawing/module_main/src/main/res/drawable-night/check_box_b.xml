@@ -1,7 +1,0 @@
-<!-- res/drawable/checkbox_selector.xml -->
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- CheckBox 选中状态 -->
-    <item android:drawable="@drawable/select_big_unselected" android:state_checked="false"/>
-    <!-- CheckBox 未选中状态 -->
-    <item android:drawable="@drawable/select_big_selected" android:state_checked="true"/>
-</selector>
